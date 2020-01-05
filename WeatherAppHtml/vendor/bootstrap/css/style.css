@@ -467,64 +467,51 @@ ul.top-menu > li > a:hover, ul.top-menu > li > a:focus {
 /*This part is added */
 
 
-
 .bodycarousel{
-  margin-top:5px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: white;
+    padding-top:10px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
 }
 .dsptc-main-temp{
-  font-size: 40px;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  
+    font-size: 40px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    
 }
 #prague{
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-left: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-left: 60px;
+    float: left;
 }
 #saturday{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Helvetica, sans-serif;
-  font-size: 20px;
-  margin-left: 90px;
-  margin-top: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Helvetica, sans-serif;
+    font-size: 20px;
+    float: right;
+    padding-top: 10px;
+    padding-right: 60px;
 }
 .dsptc-clouds-result, .dsptc-humidity-result, .dsptc-wind-result, .dsptc-weather-description{
-  font-size: 15px;
+    font-size: 15px;
 }
-.dash{
-  border: 0.5px solid rgb(255, 255, 255);
-  width: 350px;
-  position: absolute ;
-  margin-top: 40px;
-  margin-left: 80px;
+#dash{
+    border: 0.5px solid rgb(253, 253, 253);
 }
 .wrap{
-  margin-top: 160px;
-  line-height: 1.5em;
-  border-right: 1px solid rgb(100, 98, 98);
+    padding-top: 60px;
+    line-height: 1.5em;
+    border-right: 1px solid rgb(100, 98, 98);
 }
 .wrap-temp{
-  margin-top: 60px;
+    padding-top: 60px;
 }
-.line{
-  border: 0.5px solid rgb(255, 255, 255);
-  width: 150px;
-  position: absolute ;
-  margin-top: 25px;
-  margin-left: 185px;
+#line{
+    border: 0.5px solid rgb(255, 255, 255);
+   
+    
 }
 .nuage{
-  height: 600px;
+    height: 600px;
 }
-.titre-temp{
-  background-color: #cf141d;
-  border-radius: 10px;
-  width: 40px;
-  margin-left: 50px;
-}
-#wind{
-  margin-top: 60px ;
-}
+
