@@ -16,24 +16,24 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.testUser().then(users => console.log(users))
-    this.userService.clearDB()
-    this.userService.register("kritikos" , "Prog123")
-    .then(()=>{
-      console.log('registered')
-    })
-    .catch(err => console.log(err))
+  //   this.userService.testUser().then(users => console.log(users))
+  //   this.userService.clearDB()
+  //   this.userService.register("kritikos" , "Programmation123")
+  //   .then(()=>{
+  //     console.log('registered')
+  //   })
+  //   .catch(err => console.log(err))
 
-    this.userService.login('kritikos', 'Prog123')
-      .then(user => {
-        console.log(this.userService.isAuth)
-        this.userService.updateProfile({ username: 'hartnel' })
-          .then(() => {
-            console.log(this.userService.user)
-          })
-          .catch(err => console.log(err));
-      })
-      .catch(err => console.log(err))
+  //   this.userService.login('kritikos', 'Programmation123')
+  //     .then(user => {
+  //       console.log(this.userService.isAuth)
+  //       this.userService.updateProfile({ username: 'hartnel' })
+  //         .then(() => {
+  //           console.log(this.userService.user)
+  //         })
+  //         .catch(err => console.log(err));
+  //     })
+  //     .catch(err => console.log(err))
   }
 
 
