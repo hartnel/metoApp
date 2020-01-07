@@ -3,7 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+
+
+  
+
+  owmUrl: 'http://api.openweathermap.org/data/2.5',
+  owmKey:'6fe9d306ce465abad0c7283788b87895',
+
+
+  osmDirectUrl:'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
+  osmReverseUrl:'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
 };
 
 /*
