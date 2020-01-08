@@ -21,8 +21,8 @@ export const LOCATION_MANAGER_ROUTES: Routes = [
 
         {
           path:'details',
-          component:LocationDetailsComponent,
-          data:Location
+          component:LocationDetailsComponent
+        
           
         }
 

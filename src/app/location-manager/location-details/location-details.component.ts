@@ -14,8 +14,9 @@ import { Location } from 'src/app/models/location';
 export class LocationDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router) {
- 
-    
+  
+    Object.assign(this.location,this.router.getCurrentNavigation().extras.state);
+      
 
   }
 
@@ -26,12 +27,7 @@ export class LocationDetailsComponent implements OnInit {
   location:Location=new Location(1,2);
   ngOnInit() {
 
-    
-    this.route.data.subscribe(data => {
-      
-      Object.assign(this.location,data);
-      alert(this.location.city);
-    })
+   
   }
 
 }
