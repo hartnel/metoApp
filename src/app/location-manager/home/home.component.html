@@ -1,5 +1,5 @@
 <div>
-  <div class="vertical-nav  bg-white container col-md-1" id="sidebar">
+  <div class="vertical-nav  bg-white container col-md-2" id="sidebar">
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center">
         <div class="media-body">
@@ -13,15 +13,30 @@
 
     <ul class="nav flex-column bg-white mb-0">
 
-        <li class="nav-item" *ngFor="let location of testLocations">
+      <li class="nav-item" *ngFor="let location of userService.getLocations()">
+
+
+          <a class="link" routerLink="details" [state]=location>
+
+            <mat-card>
+              <mat-card-header>
+                <mat-card-title>
+                  {{location.city}}
+                </mat-card-title>
+              
+              </mat-card-header>
+              <mat-card-content>
+                  ({{location.country}})
+              </mat-card-content>
+            </mat-card>
+              
+          </a>
+
+
+      </li>
 
 
 
-
-        </li>
-
-
-        
       <li class="nav-item">
 
         <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
@@ -43,7 +58,7 @@
 
 
 
-  <div class="main-panel container col-md-11">
+  <div class="main-panel container col-md-10" style="background-color:aquamarine; min-height: 500px">
 
 
 

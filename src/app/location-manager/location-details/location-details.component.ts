@@ -1,4 +1,10 @@
+
+
+
+
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from 'src/app/models/location';
 
 @Component({
   selector: 'app-location-details',
@@ -7,12 +13,25 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class LocationDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private router: Router) {
+ 
+    
 
-  @Input()
-  location:Location;
+  }
 
+
+
+
+
+  location:Location=new Location(1,2);
   ngOnInit() {
+
+    
+    this.route.data.subscribe(data => {
+      
+      Object.assign(this.location,data);
+      alert(this.location.city);
+    })
   }
 
 }

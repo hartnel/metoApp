@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {dbModule} from "./db/db.module";
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     FormsModule,
     RouterModule.forRoot([...APP_ROUTES]),
     LocationManagerModule,
-    
+    dbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
