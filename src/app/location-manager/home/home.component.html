@@ -1,22 +1,59 @@
+<div>
+  <div class="vertical-nav  bg-white container col-md-1" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center">
+        <div class="media-body">
+          <h4 class="m-0">Localisations</h4>
 
-<div class="wrapper">
-    
-    <div class="sidebar" data-background-color="white" data-active-color="danger">
-      <side-bar></side-bar>
-    </div>
-    <div class="main-panel">
-      
-      <div class="content">
-  
-        <router-outlet></router-outlet>
-  
-  
+        </div>
       </div>
-  
-  
-  
-  
     </div>
+
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+
+    <ul class="nav flex-column bg-white mb-0">
+
+        <li class="nav-item" *ngFor="let location of testLocations">
+
+
+
+
+        </li>
+
+
+        
+      <li class="nav-item">
+
+        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+        <button class="btn btn-primary" routerLink="add">
+          Ajouter une localisation
+        </button>
+
+      </li>
+
+    </ul>
   </div>
-  
-  
+
+
+
+
+
+
+
+
+
+
+  <div class="main-panel container col-md-11">
+
+
+
+    <router-outlet></router-outlet>
+
+
+
+
+
+
+
+  </div>
+</div>

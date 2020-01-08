@@ -1,33 +1,51 @@
-<mat-card class="tp-card">
+<mat-card class="mainCard">
     <mat-card-header>
-        <mat-card-title>
 
-        </mat-card-title>
 
-        <div class="container" style="width:100%" fxLayout fxLayout.xs="column" fxLayoutAlign="center" fxLayoutGap="10px"
+        <div class="container col-lg-12" style="width:100%" fxLayout fxLayout.xs="column" fxLayoutGap="20px"
             fxLayoutGap.xs="0">
 
 
-            <div fxFlex="60%">
-
-                <form width="100%">
-                    <mat-form-field>
-                        <input matInput placeholder="Ville" [ngModel]="currentLocation.fullName" [formControl]="townInput"
-                            [matAutocomplete]="foundTowns" />
-
-                    </mat-form-field>
-
-                    <mat-autocomplete #foundTowns="matAutocomplete">
-
-                        <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
-                            (onSelectionChange)="selectionLocation(location)">
-                            {{location.fullName}}
-                        </mat-option>
-
-                    </mat-autocomplete>
+            <div class="form-group" fxFlex="30%">
 
 
-                </form>
+                <mat-card class="topInput">
+                    <mat-card-header class="bg-primary">
+                        <mat-card-title>
+                            Ville
+                        </mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <form width="100%">
+                            <mat-form-field style="width:100%">
+                                <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput"
+                                    [matAutocomplete]="foundTowns" />
+
+                            </mat-form-field>
+
+                            <mat-autocomplete #foundTowns="matAutocomplete">
+
+
+                                <mat-option *ngIf="isLoading">
+                                    
+                                        <mat-spinner diameter="50" style="align-content: center"></mat-spinner>
+                                      
+
+                                </mat-option>
+                                <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
+                                    (onSelectionChange)="selectLocation(location)">
+                                    {{location.fullName}}
+                                </mat-option>
+
+                            </mat-autocomplete>
+
+
+
+
+                        </form>
+                    </mat-card-content>
+                </mat-card>
 
             </div>
 
@@ -35,13 +53,44 @@
 
 
 
-            <div class="form-group well" fxFlex="30%" fxLayoutAlign="center">
+            <div class="form-group" fxFlex="40%">
 
-                <mat-form-field> <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
-                <mat-form-field> <input matInput placeholder="Latitude" [ngModel]="currentLocation.latitude"
-                        [formControl]="latInput"> </mat-form-field>
+                <mat-card class=topInput>
+                    <mat-card-header class="bg-primary">
+                        <mat-card-title class="topInputTitle">
+                            Coordonnées
+                        </mat-card-title>
+
+                    </mat-card-header>
+                    <mat-card-content class="coordsInput">
+
+
+
+                        <mat-form-field>
+
+                            <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
+
+
+
+
+                        <mat-form-field> <input matInput placeholder="Latitude" [ngModel]="currentLocation.latitude"
+                                [formControl]="latInput"> </mat-form-field>
+
+
+
+                    </mat-card-content>
+                </mat-card>
+
             </div>
 
+
+            <div class="form-group topInputSubmit" fxFlex="30%">
+                <button class="btn-primary">
+                    Ajouter la localisation
+                </button>
+
+
+            </div>
 
 
         </div>
@@ -106,14 +155,3 @@
 
 </mat-card>
 
-<ng-container>
-    <pre>
-    zoom:{{zoom}}
-    opacity:{{opacity}}
-    latitude:{{currentLocation.latitude}}
-    longitude:{{currentLocation.longitude}}
-    latitudePointer:{{latitudePointer}}
-    longitudePointer:{{longitudePointer}}
-    
-    </pre>
-</ng-container>
