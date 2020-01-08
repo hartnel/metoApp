@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LocationManagerModule } from './location-manager/location-manager.module';
 import { RouterModule } from '@angular/router';
 import { APP_ROUTES, APP_EXTRA_OPTIONS } from './app.routes';
-import { LocationAddComponent } from './location-add/location-add.component';
+import { LocationAddComponent } from './location-manager/location-manager.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -20,7 +20,8 @@ import { MatCardModule, MatInputModule, MatAutocompleteModule, MatDatepickerModu
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
-
+import {dbModule} from "./db/db.module";
+   
 
 @NgModule({
   declarations: [
@@ -44,7 +45,7 @@ import { ProfileComponent } from './profile/profile.component';
     FormsModule,
     RouterModule.forRoot([...APP_ROUTES], {...APP_EXTRA_OPTIONS}),
     LocationManagerModule,
-    
+    dbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

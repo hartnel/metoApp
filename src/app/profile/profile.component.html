@@ -17,7 +17,8 @@
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="profile-userpic" style="text-align: center">
-                    <img src="assets/img/apple-icon.png" class="rounded-circle" alt="userImage" width="50" height="50">
+                    <input id="image" #imageInput type="file" style="display: none;">
+                    <img src="assets/img/apple-icon.png" class="rounded-circle" alt="userImage" style="border-radius: 4px;" width="50" height="50" id="target" (click)="changeImage()">
                 </div>
                 <!-- END SIDEBAR USERPIC -->
                 <!-- SIDEBAR USER TITLE -->
@@ -35,7 +36,6 @@
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
                     <button class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#demo">Modifier</button>
-                    <button type="button" class="btn btn-danger btn-sm">Message</button>
                 </div>
 
 
