@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
+
 import { RouterModule } from '@angular/router';
 import { LOCATION_MANAGER_ROUTES } from './location-manager.routes';
 import { HomeLocationsComponent } from './home/home.component';
@@ -13,28 +13,35 @@ import {
   MatAutocompleteModule,
   MatDividerModule,
   MatListModule,
-  MatProgressSpinnerModule
+  MatProgressSpinnerModule,
+  MatIconModule
 
 } from '@angular/material';
 
 
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { LocationDetailsComponent } from './location-details/location-details.component';
 
 @NgModule({
-  declarations: [SidebarComponent, HomeLocationsComponent],
+  declarations: [ HomeLocationsComponent, LocationDetailsComponent],
   imports: [
     CommonModule, 
     MatCardModule,
     MatInputModule,
+    MatListModule,
+    MatIconModule,
     MatAutocompleteModule,
+    FlexLayoutModule,
     MatProgressSpinnerModule,
+    
     ReactiveFormsModule,
     AngularOpenlayersModule,
     
    RouterModule.forChild(LOCATION_MANAGER_ROUTES)],
    exports:[
-SidebarComponent,
+
 HomeLocationsComponent
    ]
 })

@@ -26,10 +26,7 @@
                     <div class="profile-usertitle-name">
                         <h3>{{name}}  {{prename}}</h3>
                         <h3>{{sex}}</h3>
-                        <h3>{{date}}</h3>
-                    </div>
-                    <div class="profile-usertitle-job">
-                        front-end Developer
+                        <h3>{{date | date:'d MMMM y'}}</h3>
                     </div>
                 </div>
                 <!-- END SIDEBAR USER TITLE -->
@@ -44,16 +41,16 @@
                         <div class="form-group">
                             <label for="name">Nom:</label>
                             <input type="text" class="form-control" id="name" placeholder="Entrez le nouveau nom"
-                                name="name" ngModel>
+                                name="name" value="{{name}}" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="prename">Prénom:</label>
                             <input type="text" class="form-control" id="prename" placeholder="Entrez le nouveau prénom"
-                                name="prename" ngModel>
+                                name="prename" value="{{prename}}" ngModel>
                         </div>
                         <div class="form-group">
                             <label for="sex">Sexe:</label>
-                            <select class="form-control" id="sex" name="sex" ngModel>
+                            <select class="form-control" id="sex" name="sex" value="{{sex}}" ngModel>
                               <option>M</option>
                               <option>F</option>
                             </select>
@@ -65,17 +62,17 @@
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                             </mat-form-field> -->
-                            <input type="date" class="form-control" name="date" ngModel>
+                            <input type="date" value="{{date}}"  name="date" ngModel>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">valider</button>
+                        <button type="submit" class="btn btn-primary">Valider</button>
                     </form>
                 </div>
             </div>
 
             <!-- Modal footer -->
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button>
             </div>
 
         </div>

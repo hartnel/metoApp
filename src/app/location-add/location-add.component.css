@@ -1,0 +1,48 @@
+.topInput mat-card-title {
+    
+    font-family: Tahoma;
+    font-size:20px;
+    
+        
+}
+
+.topInput mat-card-header {
+    
+    margin-bottom:10px;
+}
+
+
+.topInput mat-form-field {
+    font-size: 15px;
+}
+
+.topInputSubmit{
+    align-content: space-around
+    
+}
+
+.topInputSubmit button{
+    width:40%;
+    margin:5%;
+    font-size: 14px;
+    margin-left:50%;
+    height: 60%;
+}
+
+
+.topInput {
+
+    padding-top:5px;
+    padding-bottom: 5px;
+    
+}
+
+.coordsInput mat-form-field:first-child{
+
+    
+    padding-right: 150px;
+}
+
+.mainCard {
+    margin :5px;
+}

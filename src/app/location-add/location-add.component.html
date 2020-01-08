@@ -1,0 +1,157 @@
+<mat-card class="mainCard">
+    <mat-card-header>
+
+
+        <div class="container col-lg-12" style="width:100%" fxLayout fxLayout.xs="column" fxLayoutGap="20px"
+            fxLayoutGap.xs="0">
+
+
+            <div class="form-group" fxFlex="30%">
+
+
+                <mat-card class="topInput">
+                    <mat-card-header class="bg-primary">
+                        <mat-card-title>
+                            Ville
+                        </mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <form width="100%">
+                            <mat-form-field style="width:100%">
+                                <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput"
+                                    [matAutocomplete]="foundTowns" />
+
+                            </mat-form-field>
+
+                            <mat-autocomplete #foundTowns="matAutocomplete">
+
+
+                                <mat-option *ngIf="isLoading">
+                                    
+                                        <mat-spinner diameter="50" style="align-content: center"></mat-spinner>
+                                      
+
+                                </mat-option>
+                                <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
+                                    (onSelectionChange)="selectLocation(location)">
+                                    {{location.fullName}}
+                                </mat-option>
+
+                            </mat-autocomplete>
+
+
+
+
+                        </form>
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+
+
+
+
+
+            <div class="form-group" fxFlex="40%">
+
+                <mat-card class=topInput>
+                    <mat-card-header class="bg-primary">
+                        <mat-card-title class="topInputTitle">
+                            Coordonnées
+                        </mat-card-title>
+
+                    </mat-card-header>
+                    <mat-card-content class="coordsInput">
+
+
+
+                        <mat-form-field>
+
+                            <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
+
+
+
+
+                        <mat-form-field> <input matInput placeholder="Latitude" [ngModel]="currentLocation.latitude"
+                                [formControl]="latInput"> </mat-form-field>
+
+
+
+                    </mat-card-content>
+                </mat-card>
+
+            </div>
+
+
+            <div class="form-group topInputSubmit" fxFlex="30%">
+                <button class="btn-primary">
+                    Ajouter la localisation
+                </button>
+
+
+            </div>
+
+
+        </div>
+    </mat-card-header>
+
+    <mat-card-content>
+        <aol-map [logo]="true" [width]="width" [height]="height" (onSingleClick)="onSingleClick($event)">
+            <aol-interaction-default></aol-interaction-default>
+            <aol-view [zoom]="zoom">
+                <aol-coordinate [x]="currentLocation.longitude" [y]="currentLocation.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
+            </aol-view>
+            <aol-layer-tile [opacity]="opacity">
+                <aol-source-osm></aol-source-osm>
+            </aol-layer-tile>
+            <aol-layer-vector [opacity]="opacity">
+                <aol-source-vector>
+                    <aol-feature>
+                        <aol-geometry-point>
+                            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
+                        </aol-geometry-point>
+                        <aol-style>
+                            <aol-style-circle [radius]="10">
+                                <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
+                                <aol-style-fill [color]="'green'"></aol-style-fill>
+                            </aol-style-circle>
+                        </aol-style>
+                    </aol-feature>
+                    <aol-feature>
+                        <aol-geometry-point>
+                            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
+                        </aol-geometry-point>
+                        <aol-style>
+                            <aol-style-icon [src]="markerImage" [anchor]="[0.5, 1]" [anchorXUnits]="'fraction'"
+                                [anchorYUnits]="'fraction'" [scale]="0.1" [anchorOrigin]="'top-left'">
+                            </aol-style-icon>
+                        </aol-style>
+                    </aol-feature>
+                </aol-source-vector>
+            </aol-layer-vector>
+            <aol-control>
+                <aol-content>
+                    <div class="ol-overlaycontainer-stopevent">
+                        <div class="ol-zoom ol-unselectable ol-control">
+                            <button [title]="titleZoomIn" class="ol-zoom-in" type="button" title="Zoom in" (click)="increaseZoom()">+</button>
+                            <button [title]="titleZoomOut" class="ol-zoom-out" type="button" title="Zoom out" (click)="decreaseZoom()">−</button>
+                        </div>
+                        <div class="ol-rotate ol-unselectable ol-control">
+                            <button [title]="titleCurrentLocation" (click)="pointerLocation()">&#8982;</button>
+                        </div>
+                        <div class="ol-attribution ol-unselectable ol-control ol-uncollapsible">
+                            <ul>
+                                <li>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </aol-content>
+            </aol-control>
+        </aol-map>
+
+
+    </mat-card-content>
+
+</mat-card>
+
