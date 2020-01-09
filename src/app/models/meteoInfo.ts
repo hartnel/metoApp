@@ -1,6 +1,6 @@
 export class MeteoInfo{
 
-date:Date;
+hour:number;
 temperature:{
  min,
  max,

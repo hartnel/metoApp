@@ -1,0 +1,39 @@
+
+Salut le gars,  
+Ce message s'adresse particulièrement à ces qui travaillent sur les composants d'affichage des metéo. 
+
+En prenant compte des limites de l'api OpenWeatherMap , j'ai fait une mise à jour du service weatherService.  
+Pour vous faciliter le travail , je vais vous expliquer en 5 points comment ce dernier fonctionnne :
+
+
+1. la classe MeteoInfo[models/meteoInfo.js] modélise les informations des météo à une heure donnée
+les attributs de cette classes sont
+  hour [ de type entier ) ] : (l'heure de l'information)  [ peut les valeurs des heures sont 00h-03h-...-21h
+ pressure [de type number] )]   (La pression atmosphérique en hpa(hectoPascal)
+ humidity [de type number ] ( l'humidité en pourcentage )
+temperature [de type object : {min, max, val}]
+   - min  (resp max): donne la valeur minimale (resp maximale) de la température et val sa valeur exacte .
+   - chacune de ces valeurs est exprimée en pourcentage)
+
+2. La classe MeteoDay modélise l'ensemble des informations de meteo pour une journée donnée.
+elle est caractérisée par :
+	> date (la date du jour)
+	> meteoInfos[un tableau de météoINfos)  (l'ensemble des informations de  meteo pour cette journée)
+3. 
+
+4. la classe Location [ models / location.js]  modélise une localisation( ville, pays, coordonnées géographiques). 
+une location en plus les attributs suivants :
+  > currentMétéodDay[ de type MeteoDay]  correspond aux informations différentes de météo de la journée courante (la météoInfo courante est la dernière valeur de son météoInfos[]) 
+
+ > forecastMeteoDay [de type MeteoDay[] ]correspond aux informations de météo pour les 5 journées à venir .>
+
+5. Le service  weatherService fourint une méthode getMeteoInfos() qui permet d'insérer toutes ces informations de météo dans une instance de Location . 
+		Exemple d'appel :
+	> Location yde= new Location().
+		  yde.longitude=11,51
+		  yde.latitude=3.87
+
+	> weatherService.getMeteoInfos(yde).
+
+	
+	>// Obtention des informations de méto de l'heure courante()
