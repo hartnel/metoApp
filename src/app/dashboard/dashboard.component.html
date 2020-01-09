@@ -1,5 +1,37 @@
-<H1>
+<mat-card>
 
 
-    ICI LES DIFFERENTES CARTES DE METEO
-</H1>
+<mat-card-content>
+
+    
+</mat-card-content>
+    
+<ngb-carousel
+[showNavigationArrows]="true" 
+[showNavigationIndicators]="true"
+interval="10000"
+[keyboard]="true"
+[pauseOnHover]="true"
+[wrap]="true"
+[activeId]="'slideTwo'"
+>
+    
+    <ng-template ngbSlide   *ngFor="let location of userService.getLocations()|keyvalue" >
+
+
+        
+        
+        <weather-card [location]="location.value">
+            
+
+        </weather-card>
+    
+      
+    </ng-template>
+    
+</ngb-carousel>
+
+
+
+
+</mat-card>

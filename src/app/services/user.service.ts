@@ -1,25 +1,47 @@
 import { Injectable } from "@angular/core";
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import {Location} from '../models/location';
+import { Router } from '@angular/router';
 
 
 @Injectable()
 export class UserService {
-
+  
   isAuth = false;
   user: any;
 
-  constructor(private dbService: NgxIndexedDBService) {
+  private userLocations=new Map();
+  constructor(private dbService: NgxIndexedDBService,private router:Router) {
+    this.initLocations();
     dbService.currentStore = 'user';
     this.checkIfDatabaseIsEmpty();
+
+
+    
   }
 
   addLocation(location : Location) : Promise<any>{
-    this.user.locations.push(location);
-    return this.updateProfile(this.user)
+
+    if (this.userLocations.has(location.key)){
+      console.log("localisation présente");
+      alert("Vous avez déjà enregistré cette localisation");
+      return;
+    }
+
+
+   // this.user.locations.push(location);
+    this.userLocations.set(location.key,location);
+    //return this.updateProfile(this.user)
   }
 
   removeLocation(location : Location) : Promise<any>{
+
+    if(confirm("Voulez-vous vraiment supprimer cette localisation?")){
+      this.userLocations.delete(location.key);
+      this.router.navigateByUrl('locations/add');
+      return;
+      
+    }
    let new_location = this.user.locations.filter(
      (loc : Location)=> (loc.name != location.name)
    )
@@ -30,17 +52,26 @@ export class UserService {
   }
 
 
-
   getLocations(){
-    var yaounde=new Location(0,0);
+  return this.userLocations;
+  }
+ 
+
+  initLocations(){
+    var yaounde=new Location(11.51667, 3.866);
+
       yaounde.country="Cameroun";
       yaounde.city="Yaoundé";
 
-    var douala=new Location(1,1);
+    var douala=new Location(9.7,4.05);
       douala.country="Cameroun";
-      douala.city="Douala";
+      douala.city="Doualad";
 
-      return [yaounde,douala];
+      
+     
+      this.userLocations.set(douala.key,douala);
+      this.userLocations.set(yaounde.key,yaounde);
+     
   }
 
   private checkIfDatabaseIsEmpty() {

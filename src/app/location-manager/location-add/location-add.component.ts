@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { MapService } from '../services/map.service';
+import { MapService } from '../../services/map.service';
 import { FormControl } from '@angular/forms';
 import { map, catchError, debounceTime, tap } from 'rxjs/operators';
 import { proj, View } from 'openlayers';
 import { Subscription, Observable, of } from 'rxjs';
-import { Location } from '../models/location';
+import { Location } from '../../models/location';
 import { AlertPromise } from 'selenium-webdriver';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-location-add',
   templateUrl: './location-add.component.html',
@@ -24,9 +25,9 @@ export class LocationAddComponent implements OnInit {
 
   foundLocations: Observable<Location[]>;
 
-  constructor(private mapService: MapService) {
+  constructor(private mapService: MapService,private userService :UserService) {
 
-    this.currentLocation = new Location(11.51667, 3.866);
+    this.currentLocation = new Location(2.3514992, 48.85);
 
     this.longitudePointer = this.currentLocation.longitude;
     this.latitudePointer = this.currentLocation.latitude;
@@ -35,10 +36,37 @@ export class LocationAddComponent implements OnInit {
     
 
   }
+
+
+
+
+
+
+
+  map:any;
+  ol:any;
+
+
+
+  actionAdd(){
+
+      this.userService.addLocation(this.currentLocation);
+  }
+
+
+
+
+
+
+
+
+
   markerImage = "assets/marker.png";
 
   ngOnInit() {
     this.configureTownInput();
+
+    
   }
 
 
@@ -73,7 +101,13 @@ export class LocationAddComponent implements OnInit {
         var location = data[counter];
         console.log(location);
         if (location['address']) {
-          if (city.localeCompare(location['address']['city'], undefined, { sensitivity: 'base' }) == 0) {
+          if (city.localeCompare(location['address']['city'], undefined, { sensitivity: 'base' }) == 0 
+          
+          
+                    
+          
+          
+          ) {
             var current = new Location(location['lon'], location['lat']);
             current.city = location['address']['city'];
             current.region = location['address']['state'];
@@ -180,7 +214,8 @@ export class LocationAddComponent implements OnInit {
     console.log("selecting location");
     
     this.currentLocation = location;
-    //proj.transform([this.currentLocation.longitude,this.currentLocation.latitude], 'EPSG:3857', 'EPSG:4326')
+
+    console.log(this.currentLocation);
 
     
   }

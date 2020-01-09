@@ -9,28 +9,28 @@
       </div>
     </div>
 
-    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">liste complète</p>
 
     <ul class="nav flex-column bg-white mb-0">
 
-      <li class="nav-item" *ngFor="let location of userService.getLocations()">
+      <li class="nav-item" *ngFor="let location of userService.getLocations()|keyvalue">
 
 
-          <a class="link" routerLink="details" [state]=location>
+        <a class="link" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
 
-            <mat-card>
-              <mat-card-header>
-                <mat-card-title>
-                  {{location.city}}
-                </mat-card-title>
-              
-              </mat-card-header>
-              <mat-card-content>
-                  ({{location.country}})
-              </mat-card-content>
-            </mat-card>
-              
-          </a>
+          <mat-card>
+            <mat-card-header>
+              <mat-card-title>
+                {{location.value.city}}
+              </mat-card-title>
+
+            </mat-card-header>
+            <mat-card-content>
+              ({{location.value.country}})
+            </mat-card-content>
+          </mat-card>
+
+        </a>
 
 
       </li>
@@ -40,9 +40,20 @@
       <li class="nav-item">
 
         <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-        <button class="btn btn-primary" routerLink="add">
-          Ajouter une localisation
-        </button>
+
+        <mat-card>
+          <mat-card-content>
+
+            <button mat-raised-button  routerLinkActive="activeButtonLink" style="min-height: 100%; width:100%;"
+              routerLink="add">
+
+
+              <mat-icon>add</mat-icon>
+              Ajouter une localisation
+            </button>
+
+          </mat-card-content>
+        </mat-card>
 
       </li>
 
@@ -58,7 +69,7 @@
 
 
 
-  <div class="main-panel container col-md-10" style="background-color:aquamarine; min-height: 500px">
+  <div class="main-panel container col-md-10 min-height: 500px">
 
 
 

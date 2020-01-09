@@ -1,30 +1,19 @@
 export class MeteoInfo{
 
-temperature:number;
-
-
-
-get temperatureText(){
-
-
-    if(!this.useKelvin){
-
-        return   `${this.temperature-273.15}°C`
-
-    }
-    else{
-        return  `${this.temperature} F`;
-    }
-}
-
-
-useKelvin:boolean=false;
-
+date:Date;
+temperature:{
+ min,
+ max,
+ val   
+};
 
 
 humidity:number;
 
 pressure:number;
+
+useKelvin:boolean=false;
+
 
 
 
