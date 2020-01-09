@@ -12,7 +12,7 @@ postcode:string;
 street:string;
 
 currentWeather:MeteoInfo=new MeteoInfo();
-forecastWeather:MeteoInfo=new MeteoInfo();
+forecastWeather:MeteoInfo[]=new Array<MeteoInfo>();
 
 
 

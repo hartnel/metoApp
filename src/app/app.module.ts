@@ -5,41 +5,67 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { RouterModule } from '@angular/router';
-import { APP_ROUTES } from './app.routes';
+
 
 
 
 import { LocationManagerModule } from './location-manager/location-manager.module';
 
 
+import { APP_ROUTES} from './app.routes';
+import { LocationAddComponent } from './location-manager/location-add/location-add.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
+
 
 
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import {ReactiveFormsModule, FormsModule} from '@angular/forms';
 
+import {ReactiveFormsModule} from '@angular/forms';
 
 import { HttpClientModule } from '@angular/common/http';
 
-import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatListModule, MatProgressSpinnerModule } from '@angular/material';
+
+
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+import { FormsModule } from '@angular/forms';
+import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule } from '@angular/material';
+
+
 import { AngularOpenlayersModule } from 'ngx-openlayers';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
 import {dbModule} from "./db/db.module";
-
+import { UserService } from './services/user.service';
+import { WeatherCardComponent } from './weather-card/weather-card.component';
+import { WeatherService } from './services/weather.service';
+   
 
 @NgModule({
   declarations: [
     AppComponent,
-  DashboardComponent
+
+  DashboardComponent,
+
+    DashboardComponent,
+    ProfileComponent,
+    WeatherCardComponent  
+
   ],
   imports: [
+    NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     MatListModule,
     FormsModule,
     HttpClientModule,
+    MatIconModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
     MatCardModule,
     MatInputModule,
     MatFormFieldModule,
@@ -53,7 +79,8 @@ import {dbModule} from "./db/db.module";
     LocationManagerModule,
     dbModule
   ],
-  providers: [],
+  providers: [UserService,WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+     

@@ -12,20 +12,34 @@ export const LOCATION_MANAGER_ROUTES: Routes = [
 
     path: 'locations',
     component: HomeLocationsComponent,
-    children:[
-        {
-            path:'add',
-            component:LocationAddComponent,
-            
+    children: [
 
-        },
+      {
+        path: '',
+        redirectTo:'add',
+        pathMatch:'full'
 
-        {
-          path:'details/:fullName',
-          component:LocationDetailsComponent
-        
-          
-        }
+      }
+
+
+      ,
+      
+
+      {
+
+
+        path: 'add',
+        component: LocationAddComponent,
+
+
+      },
+
+      {
+        path: 'details/:fullName',
+        component: LocationDetailsComponent
+
+
+      }
 
 
     ],

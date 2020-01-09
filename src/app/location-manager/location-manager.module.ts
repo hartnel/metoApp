@@ -40,6 +40,7 @@ import { TownImageService } from '../services/town-image.service';
   declarations: [HomeLocationsComponent, LocationDetailsComponent,LocationAddComponent],
   imports: [
     CommonModule,
+    
     FormsModule,
     MatCardModule,
     MatInputModule,

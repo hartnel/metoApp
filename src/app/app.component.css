@@ -1,0 +1,41 @@
+app-component {
+
+    background: url("../assets/img/default_bg.jpg");
+}
+
+.main_nav {
+    
+    float:right;
+    max-height: 100px;
+}
+
+.main_nav mat-card {
+
+    margin-left: 30px;
+    padding:10px;
+    background: none;  
+    font-weight: bold;
+
+    
+}
+
+.main_nav a {
+    padding :0px;
+}
+
+
+.main_nav li {
+    padding :0px;
+}
+
+
+
+.main_nav ul {
+    padding :0px;
+}
+.activeLink mat-card{
+
+    background-color: lightblue;
+}
+
+
