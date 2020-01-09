@@ -87,7 +87,7 @@ export class LocationAddComponent implements OnInit {
 
 
 
-  findLocations(city: string) {
+  tions(city: string) {
 
     console.log("recherhe de localisation")
     var result = new Map();
@@ -227,13 +227,15 @@ export class LocationAddComponent implements OnInit {
 
     this.townInput.valueChanges.pipe(debounceTime(1000)).subscribe(newValue => {
       
-          if(newValue==this.currentLocation.fullName)return;
-
+          if(newValue==this.currentLocation.fullName||newValue===""){
+            this.isLoading=false;
+            return;
+          }
       this.isLoading = true;
       this.foundLocations = null;
 
 
-      this.findLocations(newValue);
+      this.tions(newValue);
 
 
 

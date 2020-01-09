@@ -24,7 +24,7 @@ get fullName(){
 
         return (this.country+", "+this.region);
     }  
-    return this.city+" ( "+this.country +" "+this.region+")";
+    return this.city+" ( "+this.country +" ,"+this.region+")";
 
 }
 

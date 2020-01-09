@@ -12,7 +12,6 @@ humidity:number;
 
 pressure:number;
 
-useKelvin:boolean=false;
 
 
 

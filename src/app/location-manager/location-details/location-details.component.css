@@ -1,6 +1,9 @@
-.locationInfos {
-
-   
+.mainContainer 
+{
+    
+}
+.mainContainer::after{
+    opacity: 0.5;
 }
 
 
@@ -33,15 +36,20 @@
 }
 
 
+
+.locationInfos {
+    background: transparent;
+
+    background-size: 100% 100%;
+    
+}
+
 .locationInfos mat-card {
 
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255,255,255,.7);
 }
-.locationInfos mat-card::after{
-    
-opacity: 0.5;
-    
-}
+
+
 
 .locationInfos mat-card mat-card-header {
     background-color:lightblue;

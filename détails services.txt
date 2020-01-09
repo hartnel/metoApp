@@ -36,4 +36,11 @@ une location en plus les attributs suivants :
 	> weatherService.getMeteoInfos(yde).
 
 	
-	>// Obtention des informations de méto de l'heure courante()
+	// Obtention des informations de météo de l'heure courante
+		lastIndex=yde.currentMeteoDay.meteoInfos.length-1)
+		yde.currentMeteoDay.meteoInfos.get(lastIndex).
+
+	//Obtention des informations de météo de la journée de demain à 03h.
+		yde.forecastMeteoDay[0].meteoInfos[1]
+
+	etc
