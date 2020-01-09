@@ -12,6 +12,8 @@ export const environment = {
   owmKey:'6fe9d306ce465abad0c7283788b87895',
 
 
+  wikiUrl:'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=600&titles=',
+
   osmDirectUrl:'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
   osmReverseUrl:'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
 };
