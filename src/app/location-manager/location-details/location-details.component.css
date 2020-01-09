@@ -1,0 +1,74 @@
+.locationInfos {
+
+   
+}
+
+
+     .actionBar {
+        
+        align-content: flex-end;
+        
+        
+        
+        
+
+    }
+
+    .actionBar  button {
+
+
+        height: 50px;
+        font-size: 15px;
+        background-color: lightblue;
+        border: none;
+
+
+    }
+
+
+.subCardTitle {
+
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+.locationInfos mat-card {
+
+    background-color: rgba(255,255,255,.8);
+}
+.locationInfos mat-card::after{
+    
+opacity: 0.5;
+    
+}
+
+.locationInfos mat-card mat-card-header {
+    background-color:lightblue;
+    align-items: center;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+
+
+
+}
+
+.locationInfos mat-card mat-card-content {
+
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+
+
+}
+
+.locationInfos .actionButton {
+
+
+
+
+}
+

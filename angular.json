@@ -25,9 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css" 
+            
             ],
-            "scripts": []
+            "scripts": [
+              
+            ]
           },
           "configurations": {
             "production": {
@@ -64,7 +67,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "meteoWaguy:build"
+            "browserTarget": "meteoWaguy:build",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {

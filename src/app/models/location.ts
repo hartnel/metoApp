@@ -12,7 +12,7 @@ postcode:string;
 street:string;
 
 currentWeather:MeteoInfo=new MeteoInfo();
-
+forecastWeather:MeteoInfo[]=new Array<MeteoInfo>();
 
 
 
@@ -27,6 +27,10 @@ get fullName(){
 
 }
 
+get key(){
+    return this.city+"-"+this.country+"-"+this.region;
+
+}
 set fullName(fullName:string){}
 
 constructor(longitude:number,latitude:number){
