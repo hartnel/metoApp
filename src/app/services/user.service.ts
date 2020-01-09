@@ -58,7 +58,7 @@ export class UserService {
     );
   }
 
-  register(lastname?: string, firstname?: string, birthday?: string, sex?: string, profile?: Blob, locations?:Location[]) : Promise<any>{
+  register(lastname?: string, firstname?: string, birthday?:Date, sex?: string, profile?: Blob, locations?:Location[]){
     let user = {
       lastname: lastname,
       firstname: firstname,
@@ -68,9 +68,9 @@ export class UserService {
       locations: locations,
     }
     return new Promise((resolve, reject) => {
-      if(this.isAuth){
-        return this.updateProfile(user);
-      }
+      // if(this.isAuth){
+      //   return this.updateProfile(user);
+      // }
       this.dbService.add(user)
         .then(() => {
           this.isAuth = true;
@@ -93,7 +93,7 @@ export class UserService {
 
   }
 
-  updateProfile(infos: any)  : Promise<any>{
+  updateProfile(infos: any){
     return new Promise((resolve, reject) => {
       if (this.isAuth) {
         let updatedInfo = this.checkifShouldUpdate(this.user, { ...infos })
