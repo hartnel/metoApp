@@ -24,6 +24,7 @@ export class UserService {
     this.locationService.addLocation(location)
       .then(() => {
        this.updateLocation()
+       console.log("added");
       })
       .catch(err => {
         console.log(err);

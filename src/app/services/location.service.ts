@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Location } from '../models/location';
+import { UserService } from './user.service';
+import { dbConfig } from '../db/db.conf';
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LocationService {
 
 
   private locations = new Map();
   constructor(private dbService: NgxIndexedDBService) {
-    dbService.currentStore = 'location';
+    this.dbService = new NgxIndexedDBService(dbConfig);
+    this.dbService.currentStore = 'location';
+    console.log(this.dbService.currentStore);
     this.initLocations();
-    console.log(this.locations);
+    //console.log(this.locations);
   }
 
 
@@ -59,6 +61,7 @@ export class LocationService {
         this.dbService.add(location)
           .then(() => {
             this.locations.set(location.key, location);
+            console.log(this.locations);
             return resolve();
           })
           .catch(err => reject(err));
