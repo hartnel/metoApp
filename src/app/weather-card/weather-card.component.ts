@@ -19,7 +19,7 @@ export class WeatherCardComponent implements OnInit {
     
   
     this.loadWeatherInfos();
-    console.log(this.location.currentWeather);
+    
 
 
   }
@@ -28,8 +28,7 @@ export class WeatherCardComponent implements OnInit {
 
 
   loadWeatherInfos(){
-    this.weatherService.getCurrentWeather(this.location);
-    this.weatherService.getForecastWeather(this.location)
+    this.weatherService.getMeteoInfos(this.location);
   }
 
 }

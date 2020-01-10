@@ -22,27 +22,22 @@
 }
 
 .topInputSubmit button{
-    width:40%;
-    margin:5%;
+    width:100%;
+    
     font-size: 14px;
-    margin-left:50%;
+    
     height: 60%;
 }
 
 
 .topInput {
 
-    padding-top:5px;
-    padding-bottom: 5px;
+    padding-top:1px;
+    padding-bottom: 1px;
     
 }
 
-.coordsInput mat-form-field:first-child{
-
-    
-    padding-right: 150px;
-}
 
 .mainCard {
-    margin :5px;
+    margin :1px;
 }

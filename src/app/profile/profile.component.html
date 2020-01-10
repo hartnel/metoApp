@@ -1,85 +1,58 @@
-
-
 <!-- <a href="" data-toggle="modal" data-target="#userModal"><span class="photo"><img src="assets/img/new_logo.png"
             alt="userImage" class="img-circle"></span></a> -->
 
 <!-- The Modal -->
-<div class="" id="userModal">
-    <div class="modal-dialog">
-        <div class="modal-content">
 
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Profil</h4>
-                <!-- <button type="button" class="close" data-dismiss="modal">×</button> -->
-            </div>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-avatar class="profile-userpic" style="text-align: center">
+        <input id="image" #imageInput type="file" style="display: none;" />
+        <img
+          src="assets/img/avatar.jpeg"
+          class="rounded-circle"
+          alt="userImage"
+          style="border-radius: 4px;"
+          width="50"
+          height="50"
+          id="target"
+          (click)="changeImage()"
+        />
+      </mat-card-avatar>
+    </mat-card-header>
 
-            <!-- Modal body -->
-            <div class="modal-body">
-                <div class="profile-userpic" style="text-align: center">
-                    <input id="image" #imageInput type="file" style="display: none;">
-                    <img src="assets/img/apple-icon.png" class="rounded-circle" alt="userImage" style="border-radius: 4px;" width="50" height="50" id="target" (click)="changeImage()">
-                </div>
-                <!-- END SIDEBAR USERPIC -->
-                <!-- SIDEBAR USER TITLE -->
-                <div class="profile-usertitle">
-                    <div class="profile-usertitle-name">
-                        <h3>{{name}}  {{prename}}</h3>
-                        <h3>{{sex}}</h3>
-                        <h3>{{date | date:'d MMMM y'}}</h3>
-                    </div>
-                </div>
-                <!-- END SIDEBAR USER TITLE -->
-                <!-- SIDEBAR BUTTONS -->
-                <div class="profile-userbuttons">
-                    <button class="btn btn-danger btn-sm" data-toggle="collapse" data-target="#demo">Modifier</button>
-                </div>
+    <form class="example-form" [formGroup]="userForm"  (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nom" [value] = "user.lastname" formControlName="lastname"/>
+        </mat-form-field>
 
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Prenom"  [value]="user.firstname" formControlName="firstname"/>
+        </mat-form-field>
 
-                <div id="demo" class="collapse">
-                    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-                        <div class="form-group">
-                            <label for="name">Nom:</label>
-                            <input type="text" class="form-control" id="name" placeholder="Entrez le nouveau nom"
-                                name="name" value="{{name}}" ngModel>
-                        </div>
-                        <div class="form-group">
-                            <label for="prename">Prénom:</label>
-                            <input type="text" class="form-control" id="prename" placeholder="Entrez le nouveau prénom"
-                                name="prename" value="{{prename}}" ngModel>
-                        </div>
-                        <div class="form-group">
-                            <label for="sex">Sexe:</label>
-                            <select class="form-control" id="sex" name="sex" value="{{sex}}" ngModel>
-                              <option>M</option>
-                              <option>F</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="date">Date de Naissance:</label>
-                            <!-- <mat-form-field> 
-                                <input matInput [matDatepicker]="picker" placeholder="Choisir sa date">
-                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
-                            </mat-form-field> -->
-                            <input type="date" value="{{date}}"  name="date" ngModel>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary">Valider</button>
-                    </form>
-                </div>
-            </div>
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker3" placeholder="Date de naissance" [value]="user.birthday" formControlName="birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
 
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-danger" data-dismiss="modal">Fermer</button> -->
-            </div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Choisir le sex...</mat-label>
+          <mat-select [(value)]="user.sex" formControlName="sex">
+            <mat-option [value]="sex" *ngFor="let sex of Sexs"
+              >{{ sex }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
 
-        </div>
-    </div>
+      <button mat-stroked-button color="accent" class="btn-block">
+        Enregistrer
+      </button>
+    </form>
+  </mat-card>
 </div>
-
-
 
 <!-- <label class="image-upload-container btn btn-bwm">
     <span>Select Image</span>

@@ -1,7 +1,8 @@
 import { MeteoInfo } from './meteoInfo';
+import { MeteoDay } from './meteoDay';
 
 export class Location{
-
+id:number;
 name:string;
 country:string;
 region:string;
@@ -11,8 +12,8 @@ latitude:number;
 postcode:string;
 street:string;
 
-currentWeather:MeteoInfo=new MeteoInfo();
-forecastWeather:MeteoInfo[]=new Array<MeteoInfo>();
+currentMeteoDay:MeteoDay=new MeteoDay();
+forecastMeteoDay:MeteoDay[]=new Array<MeteoDay>();
 
 
 
@@ -23,7 +24,7 @@ get fullName(){
 
         return (this.country+", "+this.region);
     }  
-    return this.city+" ( "+this.country +" "+this.region+")";
+    return this.city+" ( "+this.country +" ,"+this.region+")";
 
 }
 
