@@ -19,6 +19,6 @@ export class WeatherTodayComponent implements OnInit {
 
   ngOnInit() {
     //this.location.name = 
-  }
+  }      
 
 }
