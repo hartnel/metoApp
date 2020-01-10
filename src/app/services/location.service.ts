@@ -38,8 +38,8 @@ export class LocationService {
   async initLocations() {
     await this.dbService.getAll()
       .then((locations: Location[]) => {
+        console.log("locations" , locations);
         locations.forEach((location: Location) => {
-          //console.log(location);
           if (locations.length) {
             this.locations.set(location.key, location);
           }
