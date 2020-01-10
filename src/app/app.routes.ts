@@ -19,12 +19,9 @@ export const APP_ROUTES: Routes = [
           component: ProfileComponent
      },
      {
-          path: '',
-
+          path: 'register',
           component: RegisterComponent
-
-
-     },
+     }
 
 ]
 

@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Location } from '../models/location';
 import { Router } from '@angular/router';
+import { LocationService } from './location.service';
 
 
 @Injectable()
@@ -11,42 +12,30 @@ export class UserService {
   user: any;
 
   private userLocations = new Map();
-  constructor(private dbService: NgxIndexedDBService, private router: Router) {
+  constructor(private dbService: NgxIndexedDBService, private router: Router, private locationService: LocationService) {
     this.initLocations();
     dbService.currentStore = 'user';
     this.checkIfDatabaseIsEmpty();
 
   }
 
-  addLocation(location: Location): Promise<any> {
+  addLocation(location: Location) {
 
-    if (this.userLocations.has(location.key)) {
-      console.log("localisation présente");
-      alert("Vous avez déjà enregistré cette localisation");
-      return;
-    }
-
-
-    // this.user.locations.push(location);
-    this.userLocations.set(location.key, location);
-    //return this.updateProfile(this.user)
+    this.locationService.addLocation(location)
+      .then(() => {
+       this.updateLocation()
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
-  removeLocation(location: Location): Promise<any> {
-
-    if (confirm("Voulez-vous vraiment supprimer cette localisation?")) {
-      this.userLocations.delete(location.key);
-      this.router.navigateByUrl('locations/add');
-      return;
-
-    }
-    let new_location = this.user.locations.filter(
-      (loc: Location) => (loc.name != location.name)
-    )
-
-    this.user.locations = new_location;
-    return this.updateProfile(this.user);
-
+  removeLocation(location: Location){
+    this.locationService.removeLocation(location)
+    .then(()=>{
+      this.updateLocation()
+    })
+    .catch(err => console.log(err))
   }
 
 
@@ -55,21 +44,16 @@ export class UserService {
   }
 
 
-  initLocations() {
-    var yaounde = new Location(11.51667, 3.866);
+  async initLocations() {
+    await this.locationService.initLocations()
+      .then(() => {
+        this.updateLocation();
+      })
 
-    yaounde.country = "Cameroun";
-    yaounde.city = "Yaoundé";
+  }
 
-    var douala = new Location(9.7, 4.05);
-    douala.country = "Cameroun";
-    douala.city = "Doualad";
-
-
-
-    this.userLocations.set(douala.key, douala);
-    this.userLocations.set(yaounde.key, yaounde);
-
+  updateLocation() {
+    this.userLocations = this.locationService.getLocations();
   }
 
   private checkIfDatabaseIsEmpty() {
@@ -121,55 +105,55 @@ export class UserService {
             })
             .catch(err => reject(err));
         }).catch(err => reject(err))
-      
+
     })
-}
+  }
 
   private checkifShouldUpdate(old_obj, new_obj) {
-  let keys = Object.keys(old_obj);
-  let new_keys = Object.keys(new_obj);
-  let final_object = {}
-  keys.forEach(key => {
-    final_object[key] = new_keys.includes(key) ? new_obj[key] : old_obj[key]
-  })
+    let keys = Object.keys(old_obj);
+    let new_keys = Object.keys(new_obj);
+    let final_object = {}
+    keys.forEach(key => {
+      final_object[key] = new_keys.includes(key) ? new_obj[key] : old_obj[key]
+    })
 
-  return final_object;
+    return final_object;
 
-}
+  }
 
-flushUpdate(){
-  return new Promise((resolve, reject) => {
-    this.dbService.update(this.user)
-      .then(() => {
-        resolve();
-      })
-      .catch(err => {
-        this.checkIfDatabaseIsEmpty();
-        reject(err);
-      })
-  })
-}
-
-updateProfile(infos: any){
-  return new Promise((resolve, reject) => {
-    if (this.isAuth) {
-      let updatedInfo = this.checkifShouldUpdate(this.user, { ...infos })
-      this.dbService.update(updatedInfo)
+  flushUpdate() {
+    return new Promise((resolve, reject) => {
+      this.dbService.update(this.user)
         .then(() => {
-          this.dbService.getByID(this.user.id)
-            .then(user => {
-              this.user = user;
-              resolve()
-            })
-            .catch(err => reject(err));
+          resolve();
         })
-        .catch(err => reject(err))
-    }
-    else {
-      let err = new Error("you are not auhtenticated");
-      return reject(err);
-    }
-  })
-}
+        .catch(err => {
+          this.checkIfDatabaseIsEmpty();
+          reject(err);
+        })
+    })
+  }
+
+  updateProfile(infos: any) {
+    return new Promise((resolve, reject) => {
+      if (this.isAuth) {
+        let updatedInfo = this.checkifShouldUpdate(this.user, { ...infos })
+        this.dbService.update(updatedInfo)
+          .then(() => {
+            this.dbService.getByID(this.user.id)
+              .then(user => {
+                this.user = user;
+                resolve()
+              })
+              .catch(err => reject(err));
+          })
+          .catch(err => reject(err))
+      }
+      else {
+        let err = new Error("you are not auhtenticated");
+        return reject(err);
+      }
+    })
+  }
 
 }
