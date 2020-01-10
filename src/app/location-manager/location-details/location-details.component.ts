@@ -64,7 +64,7 @@ export class LocationDetailsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.townImageService.currentTown="";
+
     this.townImageService.getImage(this.location).subscribe(data=>{})
   }
 

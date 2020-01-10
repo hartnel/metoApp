@@ -14,8 +14,8 @@ export const environment = {
 
   wikiUrl:'https://cors-anywhere.herokuapp.com/'+'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=600&titles=',
 
-  osmDirectUrl: 'https://cors-anywhere.herokuapp.com/'+ 'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
-  osmReverseUrl:'https://cors-anywhere.herokuapp.com/'+'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
+  osmDirectUrl:  'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
+  osmReverseUrl:'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
 };
 
 /*

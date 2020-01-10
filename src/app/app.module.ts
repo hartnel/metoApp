@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule } from '@angular/material';
+import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule, MatToolbarModule, MatSidenavModule } from '@angular/material';
 
 
 import { AngularOpenlayersModule } from 'ngx-openlayers';
@@ -63,6 +63,8 @@ import { WeatherService } from './services/weather.service';
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,

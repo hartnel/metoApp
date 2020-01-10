@@ -20,7 +20,7 @@ export class TownImageService {
 
   constructor(private httpClient:HttpClient) { }
 
-  currentTown:String;
+  currentTown:String=DEFAULT_CITY;
 
    getImage(location:Location):Observable <String>{
 
@@ -28,6 +28,9 @@ export class TownImageService {
 
 
    var url=environment.wikiUrl+location.city;
+    
+
+
     return this.httpClient.get(url,{headers}).pipe ( map(data=>{
 
   

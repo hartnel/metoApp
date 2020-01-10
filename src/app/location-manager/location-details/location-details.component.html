@@ -3,7 +3,7 @@
 
 
 
-    <mat-card fxFlex="50%"   class=" locationInfos" [ngStyle]="{'background-image': townImageService.currentTown}"
+    <mat-card fxFlex="50%"   class=" locationInfos d-flex  flex-column" [ngStyle]="{'background-image': townImageService.currentTown}"
         [@simpleFadeAnimation]="'in'">
 
         <mat-card-header>
@@ -106,9 +106,9 @@
 
                 
 
-                <mat-card style="vertical-align: bottom" >
+                <mat-card class="actionBar mt-auto" style="background: transparent">
 
-                    <mat-card-content class="actionBar "  fxLayoutGap="30%" fxLayout fxLayout.xs="column">
+                    <mat-card-content   fxLayoutGap="30%" fxLayout fxLayout.xs="column">
 
 
 
@@ -124,7 +124,7 @@
 
 
 
-                        <button (click)="actionDelete()" fxFlex="50%" mat-raised-button color="accent" style="float:right">
+                        <button (click)="actionDelete()" fxFlex="50%" mat-raised-button color="accent" ml-auto>
 
 
 
