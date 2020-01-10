@@ -1,0 +1,27 @@
+.main {
+  background-image: url(https://lh4.googleusercontent.com/-XplyTa1Za-I/VMSgIyAYkHI/AAAAAAAADxM/oL-rD6VP4ts/w1184-h666/Android-Lollipop-wallpapers-Google-Now-Wallpaper-2.png);
+  /* background-image: url(https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwits7rkg_jmAhXPPOwKHZ76D6gQjRx6BAgBEAQ&url=https%3A%2F%2Fwww.123rf.com%2Fphoto_99268994_blue-sky-clouds-panoramic-nature-meteo-weather-background.html&psig=AOvVaw2tioWOvtfHu7WJhoFshdRw&ust=1578711233877809); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 90vh;
+  font-family: 'Roboto', sans-serif;
+  padding-top: 5%;
+  
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.app-header {
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, .2), 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12);
+}

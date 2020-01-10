@@ -33,6 +33,7 @@ import { UserService } from '../services/user.service';
 import { LocationAddComponent } from './location-add/location-add.component';
 import { MapService } from '../services/map.service';
 import { TownImageService } from '../services/town-image.service';
+import { LocationService } from '../services/location.service';
 
 
 
@@ -54,7 +55,7 @@ import { TownImageService } from '../services/town-image.service';
     AngularOpenlayersModule,
 
     RouterModule.forChild(LOCATION_MANAGER_ROUTES)],
-  providers: [UserService,MapService,TownImageService],
+  providers: [UserService,MapService,TownImageService , LocationService],
   exports: [
 
     HomeLocationsComponent
