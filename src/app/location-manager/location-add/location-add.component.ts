@@ -19,13 +19,13 @@ export class LocationAddComponent implements OnInit {
 
   currentLocation: Location;
 
-  
+
   isLoading = false;
 
 
   foundLocations: Observable<Location[]>;
 
-  constructor(private mapService: MapService,private userService :UserService) {
+  constructor(private mapService: MapService, private userService: UserService) {
 
     this.currentLocation = new Location(2.3514992, 48.85);
 
@@ -33,7 +33,7 @@ export class LocationAddComponent implements OnInit {
     this.latitudePointer = this.currentLocation.latitude;
     this.pointLocation();
 
-    
+
 
   }
 
@@ -43,14 +43,14 @@ export class LocationAddComponent implements OnInit {
 
 
 
-  map:any;
-  ol:any;
+  map: any;
+  ol: any;
 
 
 
-  actionAdd(){
+  actionAdd() {
 
-      this.userService.addLocation(this.currentLocation);
+    this.userService.addLocation(this.currentLocation);
   }
 
 
@@ -66,7 +66,7 @@ export class LocationAddComponent implements OnInit {
   ngOnInit() {
     this.configureTownInput();
 
-    
+
   }
 
 
@@ -87,7 +87,7 @@ export class LocationAddComponent implements OnInit {
 
 
 
-  findLocations(city: string) {
+  tions(city: string) {
 
     console.log("recherhe de localisation")
     var result = new Map();
@@ -101,12 +101,12 @@ export class LocationAddComponent implements OnInit {
         var location = data[counter];
         console.log(location);
         if (location['address']) {
-          if (city.localeCompare(location['address']['city'], undefined, { sensitivity: 'base' }) == 0 
-          
-          
-                    
-          
-          
+          if (city.localeCompare(location['address']['city'], undefined, { sensitivity: 'base' }) == 0
+
+
+
+
+
           ) {
             var current = new Location(location['lon'], location['lat']);
             current.city = location['address']['city'];
@@ -161,50 +161,50 @@ export class LocationAddComponent implements OnInit {
         const val = (data || {})
 
 
-        this.currentLocation.longitude=this.longitudePointer;
-        this.currentLocation.latitude=this.latitudePointer;
+        this.currentLocation.longitude = this.longitudePointer;
+        this.currentLocation.latitude = this.latitudePointer;
 
 
 
         this.pointed = val['display_name']
 
-        if(val['address']){
+        if (val['address']) {
 
-        if (val['address']['postcode']) {
-          this.currentLocation.postcode = val['address']['postcode'];
+          if (val['address']['postcode']) {
+            this.currentLocation.postcode = val['address']['postcode'];
 
+          }
+          if (val['address']['state']) {
+
+            this.currentLocation.region = val['address']['state'];
+          }
+
+          if (val['address']['city']) {
+
+            this.currentLocation.city = val['address']['city'];
+
+
+          }
+
+
+          if (val['address']['country']) {
+            this.currentLocation.country = val['address']['country'];
+
+
+          }
+
+          const street_number = []
+          if (val['address']['street']) {
+            this.currentLocation.street = (val['address']['street']);
+          }
         }
-        if (val['address']['state']) {
-
-          this.currentLocation.region = val['address']['state'];
-        }
-
-        if (val['address']['city']) {
-
-          this.currentLocation.city = val['address']['city'];
-
-
-        }
-
-
-        if (val['address']['country']) {
-          this.currentLocation.country = val['address']['country'];
-
-
-        }
-
-        const street_number = []
-        if (val['address']['street']) {
-          this.currentLocation.street = (val['address']['street']);
-        }
-      }
 
 
 
-        
+
       })
 
-    
+
 
 
   }
@@ -212,12 +212,12 @@ export class LocationAddComponent implements OnInit {
 
   selectLocation(location) {
     console.log("selecting location");
-    
+
     this.currentLocation = location;
 
     console.log(this.currentLocation);
 
-    
+
   }
 
 
@@ -226,24 +226,26 @@ export class LocationAddComponent implements OnInit {
 
 
     this.townInput.valueChanges.pipe(debounceTime(1000)).subscribe(newValue => {
-      
-          if(newValue==this.currentLocation.fullName)return;
 
+      if (newValue == this.currentLocation.fullName || newValue === "") {
+        this.isLoading = false;
+        return;
+      }
       this.isLoading = true;
       this.foundLocations = null;
 
 
-      this.findLocations(newValue);
+      this.tions(newValue);
 
 
 
 
     });
-    
+
     this.latInput.valueChanges.pipe(debounceTime(500)).subscribe(
       newValue => {
-        
-        if(newValue==this.currentLocation.latitude) return;
+
+        if (newValue == this.currentLocation.latitude) return;
         console.log("changing latitude")
         this.latitudePointer = newValue;
         this.pointLocation();
@@ -254,8 +256,8 @@ export class LocationAddComponent implements OnInit {
 
     this.lonInput.valueChanges.pipe(debounceTime(500)).subscribe(
       newValue => {
-        
-        if(newValue=this.currentLocation.longitude) return;
+
+        if (newValue = this.currentLocation.longitude) return;
         console.log("changing longitude")
         this.longitudePointer = newValue;
         this.pointLocation();
@@ -269,7 +271,7 @@ export class LocationAddComponent implements OnInit {
     this.longitudePointer = lonlat[0]
     this.latitudePointer = lonlat[1]
     this.pointLocation();
-  
+
   }
 
 

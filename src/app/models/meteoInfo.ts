@@ -1,6 +1,6 @@
 export class MeteoInfo{
 
-date:Date;
+hour:number;
 temperature:{
  min,
  max,
@@ -12,7 +12,6 @@ humidity:number;
 
 pressure:number;
 
-useKelvin:boolean=false;
 
 
 

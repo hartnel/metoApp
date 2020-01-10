@@ -65,6 +65,8 @@ import { RegisterComponent } from './register/register.component';
     FormsModule,
     HttpClientModule,
     MatIconModule,
+    MatToolbarModule,
+    MatSidenavModule,
     MatDatepickerModule,
     MatNativeDateModule,
     BrowserAnimationsModule,
