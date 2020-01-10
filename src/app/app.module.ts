@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,7 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
-import { MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule } from '@angular/material';
+import { MatToolbarModule, MatSelectModule, MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule } from '@angular/material';
 
 
 import { AngularOpenlayersModule } from 'ngx-openlayers';
@@ -41,6 +41,7 @@ import {dbModule} from "./db/db.module";
 import { UserService } from './services/user.service';
 import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { WeatherService } from './services/weather.service';
+import { RegisterComponent } from './register/register.component';
    
 
 @NgModule({
@@ -51,7 +52,8 @@ import { WeatherService } from './services/weather.service';
 
     DashboardComponent,
     ProfileComponent,
-    WeatherCardComponent  
+    WeatherCardComponent,
+    RegisterComponent  
 
   ],
   imports: [
@@ -73,6 +75,11 @@ import { WeatherService } from './services/weather.service';
     FlexLayoutModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatToolbarModule,
+    MatIconModule,
     
     
     RouterModule.forRoot([...APP_ROUTES]),
@@ -80,7 +87,8 @@ import { WeatherService } from './services/weather.service';
     dbModule
   ],
   providers: [UserService,WeatherService],
-  bootstrap: [AppComponent]
+  bootstrap: [RegisterComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
      

@@ -1,7 +1,7 @@
 import { MeteoInfo } from './meteoInfo';
 
 export class Location{
-
+id:number;
 name:string;
 country:string;
 region:string;

@@ -23,6 +23,7 @@ export class LocationDetailsComponent implements OnInit {
     var locationFullName=route.snapshot.params['fullName'];
     this.location=userService.getLocations().get(locationFullName);
     
+    
   }
 
 
