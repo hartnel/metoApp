@@ -1,0 +1,52 @@
+<div *ngIf="stateComponent === false" class=" today forecast">
+  <div class="forecast-header" style="padding-bottom: 30px; 
+                                      font-size: 10px;
+                                      
+                                      ">
+    <div class="day">{{meteoinfo.date.getDay()}}</div>
+    <div class="date" style="color: rgb(3, 201, 236);">{{meteoinfo.date|date}}</div>
+
+  </div> <!-- .forecast-header -->
+  <div class="forecast-content">
+    <div style="background-color:rgb(24, 24, 24); padding: 7px; border-radius: 5px;">
+      <span *ngFor="let hour of meteoInfos" (click)="update(hour)"><span
+          class="" style="color: white;">{{ hour.hour }}h</span></span>
+
+    </div>
+    <div class="" style="height: 0.5px; color: white;">
+
+    </div>
+    <div class="location" style="font-size: 25px;">{{city}}</div>
+    <div class="degree">
+      <div class="num" style="font-size: 90px;
+                              font-size: 6.4285714286rem;
+                              margin-right: 30px; ">{{curent.temperature.val}}<sup>o</sup>C</div>
+      <div class="forecast-icon">
+        <img src="/assets/images/icons/pleinSoleil.svg" alt="" width=90>
+      </div>
+    </div>
+    <span><img src="/assets/images/icon-umberella.png" alt="">{{curent.humidity}}%</span>
+    <!-- <span><img src="/assets/images/icon-wind.png" alt="">{{curent.windSpeed}}km/h</span>
+    <span><img src="/assets/images/icon-compass.png" alt="">{{curent.direction}}</span> -->
+  </div>
+</div> 
+
+ <div *ngIf="stateComponent == true" style=" text-align: center; 
+                                                margin-bottom: 20px;
+                                                background: rgba(0, 0, 0, 0.1);
+                                                padding: 10px;
+                                                text-align: center;"> 
+  <div class="forecast-header" style="padding-bottom: 30px; font-size: 10px;">
+    <div class="day" style="font-size: 16px;">{{meteoinfo.date.getDay()}}</div>
+  </div> <!-- .forecast-header -->
+  <div class="forecast-content" style="font-size: 24px; 
+                                      display: inline-block;
+                                      vertical-align: middle;">
+    <div class="forecast-icon" style="height: 50px; margin-bottom: 20px;">
+      <img src="/assets/images/icons/pleinSoleil.svg" alt="" width=48>
+    </div>
+    <div class="degree" style="font-size: 24px; font-weight: bold;">{{curent.temperature.val}}<sup>o</sup>C</div>
+    <small style="font-size: 16px;">{{curent.humidity}}%</small>
+  </div>
+
+</div> 

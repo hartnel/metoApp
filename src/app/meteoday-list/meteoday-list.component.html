@@ -1,0 +1,22 @@
+<div class="forecast-table" style="padding-top: 190px;">
+  <div class="container">
+    <div class="forecast-container">
+
+      <div *ngIf="location.forecastMeteoDay">
+        <div *ngFor="let meteo of location.forecastMeteoDay" class="forecast">
+          <app-meteoday [stateComponent]="false" [city]="location.city" [meteoinfo]="meteo">
+
+          </app-meteoday>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="!location.forecastMeteoDay">
+          running...
+      </div>
+
+
+    </div>
+  </div>
+</div>
