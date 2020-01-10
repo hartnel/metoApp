@@ -29,7 +29,7 @@ export class TownImageService {
 
    var url=environment.wikiUrl+location.city;
     
-
+    
 
     return this.httpClient.get(url,{headers}).pipe ( map(data=>{
 

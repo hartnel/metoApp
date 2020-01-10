@@ -1,7 +1,11 @@
-<div class="mainDiv">
+<div class="mainDiv" >
 
 
-  <div class="vertical-nav  bg-white container col-md-2" id="sidebar">
+
+
+
+  
+  <div class="vertical-nav  bg-white container col-md-2" id="sidebar" >
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center">
         <div class="media-body">
@@ -13,12 +17,33 @@
 
     <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">liste complète</p>
 
-    <ul class="nav flex-column bg-white mb-0">
+    <ul class="nav flex-column bg-white mb-0" >
+
+
+        <li class="nav-item">
+
+            <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+    
+            <mat-card>
+              <mat-card-content>
+    
+                <button mat-raised-button  routerLinkActive="activeButtonLink" style="min-height: 100%; width:100%;"
+                  routerLink="add"  (click)="scrollToElement(content)">
+    
+    
+                  <mat-icon>add</mat-icon>
+                  Ajouter une localisation
+                </button>
+              
+              </mat-card-content>
+            </mat-card>
+    
+          </li>
 
       <li class="nav-item" *ngFor="let location of userService.getLocations()|keyvalue">
 
 
-        <a class="link" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
+        <a class="link"  (click)="scrollToElement(content)" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
 
           <mat-card>
             <mat-card-header>
@@ -39,25 +64,7 @@
 
 
 
-      <li class="nav-item">
-
-        <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-
-        <mat-card>
-          <mat-card-content>
-
-            <button mat-raised-button  routerLinkActive="activeButtonLink" style="min-height: 100%; width:100%;"
-              routerLink="add">
-
-
-              <mat-icon>add</mat-icon>
-              Ajouter une localisation
-            </button>
-
-          </mat-card-content>
-        </mat-card>
-
-      </li>
+     
 
     </ul>
   </div>
@@ -71,11 +78,11 @@
 
 
 
-  <div class="main-panel container col-md-10 " style="min-height: 100;align-content:space-between">
+  <div class="main-panel container col-md-10 " style="padding:0px;" >
 
 
 
-    <router-outlet></router-outlet>
+    <router-outlet #content></router-outlet>
 
 
 

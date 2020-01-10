@@ -71,7 +71,12 @@ export class UserService {
      
       this.userLocations.set(douala.key,douala);
       this.userLocations.set(yaounde.key,yaounde);
+      
      
+    /*  for(var i=0;i<15;i++){
+        this.userLocations.set(yaounde.key+i,yaounde);
+
+      }*/
   }
 
   private checkIfDatabaseIsEmpty() {
