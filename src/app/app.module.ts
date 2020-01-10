@@ -42,7 +42,7 @@ import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { WeatherService } from './services/weather.service';
 import { RegisterComponent } from './register/register.component';
 import { MeteoCardComponent } from 'VUESYEF/src/src/app/meteo-card/meteo-card.component';
-import { MeteoGlobalComponent } from './dashboard/meteo-global/meteo-global.component';
+
    
 
 @NgModule({

@@ -2,6 +2,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 
 
@@ -21,22 +22,25 @@ export class ProfileComponent implements OnInit {
     lastname: "",
     firstname: "",
     birthday: new Date(2000, 0, 2),
-    sex: "M",
+    sex: "Masculin",
     profile: undefined
   }
   userForm: FormGroup;
   private fileBlob;
-  Sexs: any = ['M', 'F'];
+  Sexs: any = ['Masculin', 'Feminin'];
   ///=user: any;
-  constructor(private userService: UserService, private formBuilder: FormBuilder) { }
+  constructor(private router: Router ,private userService: UserService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
+    if(this.userService.isAuth){
+      this.router.navigateByUrl('home');
+    }
     this.testFile();
     if (this.isNew) {
       this.userService.clearDB();
       this.initForm();
-      this.userService.register("default", "default")
+      this.userService.register("", "")
         .then(() => {
           this.user = this.userService.user;
         })
@@ -104,6 +108,8 @@ export class ProfileComponent implements OnInit {
       .then(() => {
         this.user = this.userService.user;
         console.log(this.user);
+        this.router.navigateByUrl('home');
+
       })
       .catch(err => console.log(err))
   }
