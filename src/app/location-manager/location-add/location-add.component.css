@@ -1,14 +1,14 @@
 .topInput mat-card-title {
-    
+
     font-family: Tahoma;
     font-size:20px;
-    
-        
+
+
 }
 
 .topInput mat-card-header {
-    
-    margin-bottom:10px;
+
+
 }
 
 
@@ -18,14 +18,14 @@
 
 .topInputSubmit{
     align-content: space-around
-    
+
 }
 
 .topInputSubmit button{
     width:100%;
-    
+
     font-size: 14px;
-    
+
     height: 60%;
 }
 
@@ -34,7 +34,14 @@
 
     padding-top:1px;
     padding-bottom: 1px;
-    
+
+}
+
+
+.topInput mat-card-title {
+    font-weight: bold;
+
+
 }
 
 

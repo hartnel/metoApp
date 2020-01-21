@@ -16,7 +16,7 @@ export class LocationAddComponent implements OnInit {
   titleCurrentLocation: string = "Position Courante";
 
 
-
+  
   currentLocation: Location;
 
 

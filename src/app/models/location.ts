@@ -16,7 +16,7 @@ currentMeteoDay:MeteoDay=new MeteoDay();
 forecastMeteoDay:MeteoDay[]=new Array<MeteoDay>();
 
 
-
+infosAvailable=false;
 
 
 get fullName(){

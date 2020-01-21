@@ -45,11 +45,12 @@ export class UserService {
 
 
   async initLocations() {
-    await this.locationService.initLocations()
+    /* await this.locationService.initLocations()
       .then(() => {
         this.updateLocation();
       })
-
+      */
+     
   }
 
   updateLocation() {

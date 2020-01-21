@@ -8,14 +8,14 @@ export const environment = {
 
   
 
-  owmUrl: 'https://cors-anywhere.herokuapp.com/'+'http://api.openweathermap.org/data/2.5',
-  owmKey:'4ce43072e4701bde21707be99a0d2632',
+  owmUrl: 'http://api.openweathermap.org/data/2.5',
+  owmKey:'3a72fccc4583fabb6bcbe1f92cdb7700',//'4ce43072e4701bde21707be99a0d2632',
 
 
   wikiUrl:'https://cors-anywhere.herokuapp.com/'+'http://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&pithumbsize=600&titles=',
 
-  osmDirectUrl:  'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
-  osmReverseUrl:'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
+  osmDirectUrl:  'https://cors-anywhere.herokuapp.com/'+'https://nominatim.openstreetmap.org/search?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&q={city}&type=city&addressdetails=1',
+  osmReverseUrl:'https://cors-anywhere.herokuapp.com/'+'https://nominatim.openstreetmap.org/reverse?key=iTzWSiYpGxDvhATNtSrqx5gDcnMOkntL&format=json&addressdetails=1&lat={lat}&lon={lon}'
 };
 
 /*

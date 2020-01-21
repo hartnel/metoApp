@@ -1,120 +1,111 @@
-<mat-card class="mainCard"   fxLayout="column" 
-fxLayout.xs="column" 
-fxFlexFill>
-    <mat-card-header   fxLayout fxLayout.xs="column" fxLayoutGap="1%" 
-
-    
+<mat-card class="mainCard" fxLayout="column" fxLayout.xs="column" fxFlexFill  class="bg-transparent">
+    <div fxLayout fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="2"    fxLayoutAlign="space-between" style="padding:0px 25px 0px 25px;" >
 
 
 
 
-    fxLayoutGap.xs="2"   fxLayout="row" >
+
+        <div class="form-group" fxFlex="30"  fxFlex.xs="100">
 
 
-        
-f
+            <mat-card class="topInput white-transparent">
+                <mat-card-header>
+                    <mat-card-title>
+                        Ville
+                    </mat-card-title>
+                </mat-card-header>
 
-            <div class="form-group"    fxFlex="30%">
+                <mat-card-content>
+                    <form width="100%">
+                        <mat-form-field style="width:100%">
+                            <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput"
+                                [matAutocomplete]="foundTowns" />
 
+                        </mat-form-field>
 
-                <mat-card class="topInput">
-                    <mat-card-header class="bg-primary">
-                        <mat-card-title>
-                            Ville
-                        </mat-card-title>
-                    </mat-card-header>
-
-                    <mat-card-content>
-                        <form width="100%">
-                            <mat-form-field style="width:100%">
-                                <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput"
-                                    [matAutocomplete]="foundTowns" />
-
-                            </mat-form-field>
-
-                            <mat-autocomplete #foundTowns="matAutocomplete">
+                        <mat-autocomplete #foundTowns="matAutocomplete">
 
 
-                                <mat-option *ngIf="isLoading">
-
-                                    <mat-spinner diameter="50" style="align-content: center"></mat-spinner>
-
-
-                                </mat-option>
-                                <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
-                                    (onSelectionChange)="selectLocation(location)">
-                                    {{location.fullName}}
-                                </mat-option>
-
-                            </mat-autocomplete>
+                            <mat-option *ngIf="isLoading">
 
 
 
 
-                        </form>
-                    </mat-card-content>
-                </mat-card>
+                            </mat-option>
+                            <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
+                                (onSelectionChange)="selectLocation(location)">
+                                {{location.fullName}}
+                            </mat-option>
 
-            </div>
-
-            
-
-           
-            <div class="form-group" fxFlex="30"   >
-
-                    <mat-card class=topInput>
-                        <mat-card-header class="bg-primary">
-                            <mat-card-title class="topInputTitle">
-                                Coordonnées
-                            </mat-card-title>
-    
-                        </mat-card-header>
-                        <mat-card-content class="coordsInput"  fxLayout.xs="column">
-    
-    
-    
-                            <mat-form-field d-flex>
-    
-                                <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
-    
-    
-    
-    
-                            <mat-form-field fxFlex  fxLayoutAlign="end" fxLayoutAlign.xs="start"> <input matInput placeholder="Latitude" [ngModel]="currentLocation.latitude"
-                                    [formControl]="latInput" > </mat-form-field>
-    
-    
-    
-                        </mat-card-content>
-                    </mat-card>
-    
-                </div>
-                
-
-                 
-            <div class="form-group ;align-content:center;"  fxFlex="30%"  >
-                    <mat-card >
-                  
-                              <button mat-button style="width: 100%" class="btn-primary"   routerLinkActive="activeButtonLink" 
-                                            routerLink="add" (click)="actionAdd()">
-                  
-                  
-                                <mat-icon>validate</mat-icon>
-                                Ajouter 
-                              </button>
-                  
-                            </mat-card>
-
-            </div>
+                        </mat-autocomplete>
 
 
 
 
-        
-        
-    </mat-card-header>
+                    </form>
+                </mat-card-content>
+            </mat-card>
 
-    <mat-card-content fxFlex.xs="50">
+        </div>
+
+
+
+
+        <div class="form-group" fxFlex="30" fxFlex.xs="100">
+
+            <mat-card class="topInput white-transparent">
+                <mat-card-header>
+                    <mat-card-title class="topInputTitle">
+                        Coordonnées
+                    </mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content class="coordsInput" fxLayout.xs="column">
+
+
+
+                    <mat-form-field d-flex>
+
+                        <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
+
+
+
+
+                    <mat-form-field fxFlex fxLayoutAlign="end" fxLayoutAlign.xs="start"> <input matInput placeholder="Latitude"
+                            [ngModel]="currentLocation.latitude" [formControl]="latInput"> </mat-form-field>
+
+
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+
+
+        <div class="form-group ;align-content:center;" fxFlex="20" fxFlex.xs="100%">
+            <mat-card  class="topInput white-transparent " style="height: 100% " fxLayout fxLayout="col" >
+
+                <button mat-button style="width: 100%; height: 60%;align-self:center;"  routerLinkActive="activeButtonLink"
+                    routerLink="add" (click)="actionAdd()">
+
+
+                    <mat-icon>validate</mat-icon>
+                    Ajouter
+                </button>
+
+            </mat-card>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <div  fxFlex="60" fxFlex.xs="50">
         <aol-map [logo]="true" [width]="width" [height]="height" (onSingleClick)="onSingleClick($event)">
             <aol-interaction-default></aol-interaction-default>
             <aol-view [zoom]="zoom">
@@ -169,6 +160,6 @@ f
         </aol-map>
 
 
-    </mat-card-content>
+      </div>
 
 </mat-card>

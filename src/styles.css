@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+
+
+.white-transparent {
+background: rgb(255,255,255,0.1);
+
+}
+
+
+
+.white-semi-transparent {
+    background: rgb(255,255,255,0.6);
+
+    }

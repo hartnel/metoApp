@@ -30,7 +30,9 @@ export class WeatherService {
 
       var meteoInfo = new MeteoInfo();
 
-      meteoInfo.hour = new Date().getHours();
+      meteoInfo.hour = new Date(data['dt_txt']).getHours();
+      meteoInfo.weatherState=data['weather'][0]['main'];
+      meteoInfo.setMainIcon();
       meteoInfo.humidity = data['main']['humidty'];
       meteoInfo.pressure = data['main']['pressure'];
       meteoInfo.temperature = {
@@ -43,8 +45,16 @@ export class WeatherService {
 
 
       
+
       location.currentMeteoDay.meteoInfos.push(meteoInfo);
-    
+
+      location.infosAvailable=true;
+
+     
+
+
+
+
 
   }); }
 
@@ -76,10 +86,16 @@ export class WeatherService {
 
             }
 
+            
+            if(![3,9,15,21].includes ( new Date(info['dt_txt']).getHours())) continue;
+            
             var meteoInfo = new MeteoInfo();
 
 
             meteoInfo.hour = new Date(info['dt_txt']).getHours();
+            
+            meteoInfo.weatherState=info['weather'][0]['main'];
+            meteoInfo.setMainIcon();
             meteoInfo.humidity = info['main']['humidity'];
             meteoInfo.pressure = info['main']['pressure'];
             meteoInfo.temperature = {

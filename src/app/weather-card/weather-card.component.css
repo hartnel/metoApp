@@ -1,0 +1,108 @@
+.town-title {
+
+    margin:10px;
+
+    padding:10px;
+
+  
+text-align: left;
+font-weight: bold;
+font-size: 16px;
+   
+
+}
+
+.mainCard {
+
+   
+    background:linear-gradient(#3461eb,#4c075c);
+    
+ 
+height:100%;
+    width: 100%;
+    
+    
+
+    
+
+    
+}
+
+.forecastInfos {
+
+    background-color: white;
+    border-radius:5px;
+}
+
+
+.meteoInfos {
+
+
+}
+.mainCard .header {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 1em;
+    padding:7px;
+}
+.tempValue {
+    
+    text-align: left;
+    
+    font-size:8vh;
+    color:white;
+    
+    font-weight: bold
+
+}
+
+.weatherState {
+    text-align: left;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;    
+}
+
+
+
+
+.otherInfos {
+
+  
+  
+
+}
+
+.todayIcon {
+
+    background-size: auto 100%;
+    background-repeat: no-repeat;
+    background-position-x: right;
+}
+
+
+
+.todayHumidity {
+    
+}
+
+.todayPressure {
+    text-align: right;
+    color:white;
+    font-weight: bold;
+    font-size: 12px;    
+
+    
+}
+
+.hourTitle {
+font-weight:bold;
+font-size: 12px;
+
+}
+
+.forecastTemp {
+    font-size: 18px;
+    color:#4c075c;
+    
+    font-weight: bold;
+}

@@ -30,6 +30,7 @@
     "bootstrap": "^4.4.1",
     "leaflet": "^1.6.0",
     "mdbootstrap": "^4.11.0",
+    "ng-bootstrap": "^1.6.3",
     "ngx": "^2.4.0",
     "ngx-indexed-db": "^3.0.15",
     "ngx-openlayers": "^0.8.22",

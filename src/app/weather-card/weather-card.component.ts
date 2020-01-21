@@ -18,9 +18,10 @@ export class WeatherCardComponent implements OnInit {
     
     
   
-    this.loadWeatherInfos();
     
 
+  this.loadWeatherInfos();
+    
 
   }
 

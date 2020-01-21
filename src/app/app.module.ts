@@ -30,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
-import { MatToolbarModule, MatSelectModule, MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule, MatSidenavModule } from '@angular/material';
+import { MatToolbarModule, MatSelectModule, MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTabsModule } from '@angular/material';
 
 
 import { AngularOpenlayersModule } from 'ngx-openlayers';
@@ -42,6 +42,7 @@ import { WeatherCardComponent } from './weather-card/weather-card.component';
 import { WeatherService } from './services/weather.service';
 import { RegisterComponent } from './register/register.component';
 import { MeteoCardComponent } from 'VUESYEF/src/src/app/meteo-card/meteo-card.component';
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
    
 
@@ -49,21 +50,23 @@ import { MeteoCardComponent } from 'VUESYEF/src/src/app/meteo-card/meteo-card.co
   declarations: [
     AppComponent,
     MeteoCardComponent,
-    MeteoGlobalComponent,
+    
 
   DashboardComponent,
 
     DashboardComponent,
     ProfileComponent,
     WeatherCardComponent,
-    RegisterComponent  
+    RegisterComponent,
+    NavBarComponent  
 
   ],
   imports: [
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
+    
+    MatTabsModule,
     MatListModule,
     FormsModule,
     HttpClientModule,

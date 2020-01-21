@@ -1,6 +1,7 @@
-app-component {
+.main-app {
 
-    background: url("../assets/img/default_bg.jpg");
+     background: url("../assets/img/blue_wallaper.jpg");
+    
 }
 
 .main_nav {

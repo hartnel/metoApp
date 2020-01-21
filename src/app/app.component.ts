@@ -11,8 +11,8 @@ export class AppComponent {
   title = 'meteoWaguy';
 
   constructor(private router : Router , private userService : UserService){
-    if(!this.userService.isAuth){
+    /*if(!this.userService.isAuth){
       this.router.navigateByUrl('register')
-    }
+    }*/
   }
 }
