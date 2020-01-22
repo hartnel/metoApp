@@ -11,9 +11,15 @@ import { RegisterComponent } from './register/register.component';
 
 export const APP_ROUTES: Routes = [
 
+  {
+    path: 'register',
+    component: RegisterComponent
+},
+
 {
 path:'',
 redirectTo:'home',
+
 pathMatch:'full',
 
 },
@@ -50,10 +56,7 @@ pathMatch:'full',
           canActivate:[UserService],
           component: ProfileComponent
      },
-     {
-          path: 'register',
-          component: RegisterComponent
-     }
+
 
 ]
 

@@ -19,11 +19,7 @@ overflow-y: auto;
 }
 
 
-.sub-nav .content {
 
-
-
-}
 .sub-nav a {
 
 
@@ -72,9 +68,18 @@ background:linear-gradient(white,lightblue);
 
 }
 
-.activeLocation{
+.activeLocation {
   border-color:lightblue;
+
   background: linear-gradient(to right, #00b4db, #0083b0);
 
 }
+
+.locationItem {
+  background:lightblue;
+  padding:100px;
+  border-color: linear-gradient(to right, #00b4db, #0083b0);
+
+}
+
 

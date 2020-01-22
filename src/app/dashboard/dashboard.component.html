@@ -9,7 +9,7 @@
     <div fxFlex="80" style="height:100%" [@routeAnimations]="o && o.activatedRouteData
     && o.activatedRouteData['animation']">
 
-      <router-outlet  #o="outlet">
+      <router-outlet  >
 
     </router-outlet>
 
@@ -24,12 +24,12 @@
 <mat-card class="cardContainer locationList bg-transparent"   fxLayout="row" fxLayoutAlign="center" fxFlex="10"  >
 
 
-  <mat-toolbar fxFlex="80" class="sub-nav white-transparent" fxLayout fxLayoutAlign="space-around" >
+  <mat-toolbar fxFlex="80" class="sub-nav white-transparent" fxLayout fxLayoutGap="20" fxLayoutAlign="space-around" >
 
 
-      <a class="white-transparent" mat-button [routerLink]="['main',location.key]"   routerLinkActive="activeLocation"  [routerLinkActiveOptions]="{exact: true}" *ngFor="let location of userService.getLocations()|keyvalue">
+      <a mat-button [routerLink]="['main',location.key]"   routerLinkActive="activeLocation" class="white-transparent locationItem"  *ngFor="let location of userService.getLocations()|keyvalue" >
 
-         {{location.value.city}}
+         {{location.value.city?location.value.city:location.value.fullName}}
 
       </a>
   </mat-toolbar>

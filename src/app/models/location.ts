@@ -12,6 +12,35 @@ latitude:number;
 postcode:string;
 street:string;
 
+
+
+
+
+ toTrunc(value,n){
+ var x=(value.toString()+".0").split(".");
+  return parseFloat(x[0]+"."+x[1].substr(0,n));
+}
+
+
+
+get truncateLon(){
+  return this.toTrunc(this.longitude,4);
+}
+get truncateLat(){
+  return this.toTrunc(this.latitude,4);
+
+}
+
+
+
+
+
+
+
+
+
+
+
 currentMeteoDay:MeteoDay=new MeteoDay();
 forecastMeteoDay:MeteoDay[]=new Array<MeteoDay>();
 
@@ -35,6 +64,14 @@ get key(){
     return this.city+"-"+this.country+"-"+this.region;
 
 }
+
+
+generateKey(){
+  return this.city+"-"+this.country+"-"+this.region;
+}
+
+
+
 set fullName(fullName:string){}
 
 constructor(longitude:number,latitude:number){

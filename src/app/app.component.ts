@@ -14,5 +14,7 @@ export class AppComponent {
     /*if(!this.userService.isAuth){
       this.router.navigateByUrl('register')
     }*/
+
+
   }
 }

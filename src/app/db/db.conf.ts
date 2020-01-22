@@ -11,7 +11,7 @@ export function migrationFactory() {
 }
 
 export const dbConfig: DBConfig = {
-  name: 'MeteoDb',
+  name: 'MeteoDatabase10',
   version: 3,
   objectStoresMeta: [{
     store: 'user',

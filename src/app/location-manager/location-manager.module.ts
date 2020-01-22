@@ -55,7 +55,7 @@ import { LocationService } from '../services/location.service';
     AngularOpenlayersModule,
 
     RouterModule.forChild(LOCATION_MANAGER_ROUTES)],
-  providers: [UserService,MapService,TownImageService , LocationService],
+  providers: [MapService,TownImageService ],
   exports: [
 
     HomeLocationsComponent

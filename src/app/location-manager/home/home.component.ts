@@ -17,9 +17,17 @@ export class HomeLocationsComponent implements OnInit {
     this.router.routeReuseStrategy.shouldReuseRoute = function () {
       return false;
     };
-  
-    
+
+
   }
+
+
+  scrollToElement($element): void {
+    return;
+    console.log($element);
+    $element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  }
+
 
 
 

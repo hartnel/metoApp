@@ -100,7 +100,7 @@ import { WeatherDetailsComponent } from './weather-details/weather-details.compo
     LocationManagerModule,
     dbModule
   ],
-  providers: [UserService,WeatherService],
+  providers: [WeatherService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

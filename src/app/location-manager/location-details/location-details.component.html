@@ -3,7 +3,7 @@
 
 
 
-    <mat-card fxFlex=50% fxLayout="column"   class=" locationInfos " fxLayoutAlign="space-between"  [ngStyle]="{'background-image': townImageService.currentTown}"
+    <mat-card fxFlex=50% fxLayout="column"  *ngIf="location" class=" locationInfos " fxLayoutAlign="space-between"  [ngStyle]="{'background-image': townImageService.currentTown}"
         [@simpleFadeAnimation]="'in'">
 
 
@@ -80,7 +80,7 @@
                         <label>
                             Longitude
                         </label>
-                        <span >{{location.longitude}}</span>
+                        <span >{{location.truncateLon}}</span>
                     </div>
 
 
@@ -88,7 +88,7 @@
                         <label>
                             Latitude
                         </label>
-                        <span>{{location.latitude}} 124</span>
+                        <span>{{location.truncateLat}} </span>
                 </div>
 
             </mat-card-content>
@@ -147,7 +147,7 @@
 
 
 
-    <mat-card fxFlex="50" [@simpleFadeAnimation]="'in'" class="bg-transparent">
+    <mat-card fxFlex="50" [@simpleFadeAnimation]="'in'" class="bg-transparent" *ngIf="location" >
         <mat-card-content style="align-content: space-around; height:100%;margin:0px; " class="bg-transparent" >
 
             <div style="height: 100%;"

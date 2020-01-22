@@ -40,7 +40,7 @@ export class TownImageService {
       if(!pages[Object.keys(pages) [0]].thumbnail)
       {
       this.currentTown="url('" +DEFAULT_CITY+"')";
-      alert("no image");
+      
       return  DEFAULT_CITY;
       }
 

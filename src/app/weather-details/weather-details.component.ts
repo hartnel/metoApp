@@ -52,6 +52,7 @@ export class WeatherDetailsComponent implements OnInit,AfterViewInit {
 
   initDay(){
     this.currentMeteoDay=this.location.forecastMeteoDay[0];
+    //this.actionChange(this.currentMeteoDay.dateText);
     //document.getElementById(this.currentMeteoDay.dayText).classList.add('currentDateItem');
 
   }

@@ -14,8 +14,8 @@
         <span class="example-spacer"></span>
 
 
-        <div  fxFlex="40" fxShow="true" class="content"
-          fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="space-between" *ngIf="isAuth">
+        <div  fxFlex="50" fxShow="true" class="content"
+          fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="space-between" *ngIf="userService.user" >
           <!-- The following menu items will be hidden on both SM and XS screen sizes -->
 
           <a mat-button routerLink="/home" routerLinkActive="activeLink" >

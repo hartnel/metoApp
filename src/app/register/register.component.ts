@@ -9,14 +9,23 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService : UserService , private router : Router) { 
-    if(this.userService.isAuth){
-      this.router.navigateByUrl('home');
-    }
+  constructor(private userService : UserService , private router : Router) {
+
+
+
+    setTimeout(()=>{
+
+
+      if(this.userService.user){
+
+        console.log("Utilisateur courant sur register");
+        console.log(this.userService.user);
+       this.router.navigateByUrl('home');
+    }},500)
   }
 
   ngOnInit() {
-    
+
   }
 
 }

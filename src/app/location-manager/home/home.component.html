@@ -5,7 +5,7 @@
 
 
 
-  <div class="vertical-nav  container col-md-2 " style="height: 100%" id="sidebar" >
+  <div class="vertical-nav  container col-md-2 " style="height: 100% ;max-height: 100%" id="sidebar" >
     <mat-card style="height: 100%;background: rgb(255,255,255,0.1)" fxLayout="column" >
     <div class="py-4 px-3 mb-4 bg-transparent">
       <div class="media d-flex align-items-center bg-transparent">
@@ -18,11 +18,11 @@
 
 
 
-    <ul class="nav flex-column  mb-0 bg-transparent"  >
+    <ul class="nav mb-0 " style="overflow:auto;" >
 
 
 
-      <li class="nav-item bg-transparent"  *ngFor="let location of userService.getLocations()|keyvalue">
+      <li class="nav-item bg-transparent"   style="width: 97%" *ngFor="let location of userService.getLocations()|keyvalue">
 
 
         <a style="padding-right: 0;padding-left: 0"  class="bg-transparent" (click)="scrollToElement(content)" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
@@ -30,12 +30,12 @@
           <mat-card class="white-semi-transparent " >
             <mat-card-header>
               <mat-card-title>
-                {{location.value.city}}
+                {{location.value.city?location.value.city:location.value.region}}
               </mat-card-title>
 
             </mat-card-header>
             <mat-card-content>
-              ({{location.value.country}})
+             <h3>{{location.value.country}}</h3>
             </mat-card-content>
           </mat-card>
 

@@ -5,7 +5,9 @@ import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from
 import { LocationService } from './location.service';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class UserService implements CanActivate {
 
   isAuth = false;
@@ -14,9 +16,21 @@ export class UserService implements CanActivate {
   user: any;
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if (this.isAuth) {
+
+
+    if (this.user) {
+
+
       return true;
-    } else {
+    }
+     else {
+      console.log("non authentifié");
+      console.log("Redirection vers l'enregistrememnt");
+
+      console.log("utilisateur courant");
+      console.log(this.user);
+
+
       this.router.navigate(['/register'], {
         queryParams: {
           return: state.url
@@ -65,9 +79,12 @@ var yaounde=new Location(11.53, 3.86);
   }
 
   removeLocation(location: Location){
+
+
     this.locationService.removeLocation(location)
     .then(()=>{
       this.updateLocation()
+
     })
     .catch(err => console.log(err))
   }
@@ -94,11 +111,20 @@ var yaounde=new Location(11.53, 3.86);
   }
 
   private checkIfDatabaseIsEmpty() {
+
     this.dbService.getAll()
       .then(users => {
-        if (users.length === 0) {
+
+
+        console.log(users);
+        if (users.length!= 0) {
+
           this.isAuth = true;
           this.user = users[0]
+
+          console.log("utilisateur courant");
+          console.log(this.user);
+
         }
         else {
           this.isAuth = false;
@@ -112,7 +138,8 @@ var yaounde=new Location(11.53, 3.86);
 
 
   clearDB() {
-    this.dbService.clear().then(
+    console.log("clearing");
+    this.dbService.clear('location').then(
       () => {
       },
       error => {
@@ -122,6 +149,8 @@ var yaounde=new Location(11.53, 3.86);
   }
 
   register(lastname?: string, firstname?: string, birthday?: Date, sex?: string, profile?: Blob, locations?: Location[]) {
+    console.log("registering");
+
     let user = {
       lastname: lastname,
       firstname: firstname,
@@ -130,20 +159,22 @@ var yaounde=new Location(11.53, 3.86);
       profile: profile,
       locations: locations,
     }
-    return new Promise((resolve, reject) => {
-      this.clearDB()
+
+
       this.dbService.add(user)
         .then((id) => {
-          this.isAuth = true;
-          this.dbService.getByID(id)
-            .then(user => {
-              this.user = user
-              resolve(this.user);
-            })
-            .catch(err => reject(err));
-        }).catch(err => reject(err))
 
-    })
+          this.isAuth = true;
+          this.user=user;
+
+          this.router.navigateByUrl('locations/add');
+
+
+            })
+
+        .catch(err =>{alert("Erroer");console.log("err")})
+
+
   }
 
   private checkifShouldUpdate(old_obj, new_obj) {

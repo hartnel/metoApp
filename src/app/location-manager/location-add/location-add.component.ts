@@ -192,7 +192,11 @@ export class LocationAddComponent implements OnInit {
     this.configureMapClick();
   }
 
-  private marker:L.Layer;
+  private marker:any;
+  toTrunc(value, n){
+    var x=(value.toString()+".0").split(".");
+    return parseFloat(x[0]+"."+x[1].substr(0, n));
+}
   configureMapClick() {
     var p = this;
     this.marker= L.marker([this.currentLocation.latitude, this.currentLocation.longitude],
@@ -200,7 +204,9 @@ export class LocationAddComponent implements OnInit {
 
       );
 
-    this.map.on("click", function(ev) {
+
+
+    this.map.on("click", function(ev:any) {
 
       console.log(ev);
       var latlng = ev.latlng;

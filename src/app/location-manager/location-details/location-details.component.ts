@@ -38,10 +38,14 @@ import * as L from "leaflet";
 
 export class LocationDetailsComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private townImageService: TownImageService, private weatherService: WeatherService) {
-
+  constructor(private route: ActivatedRoute, private userService: UserService,
+    private router: Router, private townImageService: TownImageService, private weatherService: WeatherService) {
+    console.log("DETAIL DE LOCALISATION");
     var locationFullName = route.snapshot.params['key'];
+
+    console.log(locationFullName);
     this.location = userService.getLocations().get(locationFullName);
+console.log(this.userService.getLocations());
     console.log(this.location);
 
 
@@ -59,16 +63,22 @@ export class LocationDetailsComponent implements OnInit {
 
 
   actionMeteo() {
-    this.weatherService.getCurrentWeather(this.location);
+    this.router.navigateByUrl('home/main/'+this.location.key);
 
   }
   actionDelete() {
+
+    if(!confirm('Voulez vraiment supprimer cette localisation?')) return;
+    this.router.navigateByUrl('locations/add');
     this.userService.removeLocation(this.location);
 
   }
 
   ngOnInit() {
 
+
+    console.log("loca");
+    console.log(this.location);
     this.townImageService.getImage(this.location).subscribe(data=>{})
 
     this.configureMap();

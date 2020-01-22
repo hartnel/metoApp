@@ -35,6 +35,7 @@
     "ngx-indexed-db": "^3.0.15",
     "ngx-openlayers": "^0.8.22",
     "rxjs": "~6.4.0",
+    "thread-sleep": "^2.2.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"
   },

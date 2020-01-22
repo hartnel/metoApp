@@ -5,7 +5,9 @@ import { UserService } from './user.service';
 import { dbConfig } from '../db/db.conf';
 
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class LocationService {
 
 
@@ -21,7 +23,7 @@ export class LocationService {
 
 
   removeLocation(location: Location) {
-
+    console.log("deleting location");
     return new Promise((resolve, reject) => {
       this.dbService.deleteRecord(location.id)
         .then(() => {
@@ -37,16 +39,26 @@ export class LocationService {
   }
 
   async initLocations() {
-    alert("initialiazing;")
+
     await this.dbService.getAll()
       .then((locations: Location[]) => {
-        console.log("locations" , locations);
-        locations.forEach((location: Location) => {
-          if (locations.length) {
-            this.locations.set(location.key, location);
+        console.log("locations BD" );
+        for(let location of locations){
+
+          var loc=new Location(location.latitude,location.longitude);
+          Object.assign(loc,location);
+
+
+            console.log("ajout");
+
+            this.locations.set(loc.key, loc);
           }
 
-        })
+
+
+
+        console.log("mpa");
+        console.log(this.locations);
       })
       .catch(err => {
         console.log(err);
@@ -58,6 +70,8 @@ export class LocationService {
 
   addLocation(location: Location) {
     return new Promise((resolve, reject) => {
+
+
       if (this.locations.has(location.key)) {
         let err = new Error("localisation présente");
         return reject(err);

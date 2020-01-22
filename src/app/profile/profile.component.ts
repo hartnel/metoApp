@@ -36,16 +36,17 @@ export class ProfileComponent implements OnInit {
 
     this.testFile();
     if (this.isNew) {
-      this.userService.clearDB();
       this.initForm();
-      this.userService.register("", "")
+    /*    this.userService.register("", "")
         .then(() => {
           this.user = this.userService.user;
-        })
+        })*/
 
     }
     else {
       this.user = this.userService.user;
+      console.log("utilisateur courant");
+      console.log(this.user);
       this.initForm();
     }
 
@@ -70,7 +71,7 @@ export class ProfileComponent implements OnInit {
     fr.onload = function (e) {
       target.src = this.result;
     };
-    src.addEventListener("change", () => {
+    /*src.addEventListener("change", () => {
       fr.readAsDataURL(src.files[0]);
       this.fileBlob = new Blob([src.files[0]], { type: 'application/image' });
       if (this.isNew) {
@@ -83,7 +84,7 @@ export class ProfileComponent implements OnInit {
       else {
         this.updateImage()
       }
-    });
+    });*/
   }
 
   changeImage() {
@@ -101,12 +102,24 @@ export class ProfileComponent implements OnInit {
 
   onSubmit() {
     let formData = this.userForm.value;
+
+
     this.user = { ...formData };
+
+    if(!this.userService.user){
+        alert("sending registring form");
+      this.userService.register(formData.lastname  ,formData.firstname,
+      formData.birthday,formData.sex
+
+      )
+      return;
+
+    }
     this.userService.updateProfile({...formData})
       .then(() => {
         this.user = this.userService.user;
         console.log(this.user);
-        this.router.navigateByUrl('home');
+
 
       })
       .catch(err => console.log(err))

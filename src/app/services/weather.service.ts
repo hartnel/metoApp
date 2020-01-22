@@ -1,4 +1,4 @@
-import { Location } from 'src/app/models/location';
+
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -93,7 +93,7 @@ export class WeatherService {
             }
 
 
-            if(![3,9,15,21].includes ( new Date(info['dt_txt']).getHours())) continue;
+            if(![3,9,15,18,21].includes ( new Date(info['dt_txt']).getHours())) continue;
 
             var meteoInfo = new MeteoInfo();
 
