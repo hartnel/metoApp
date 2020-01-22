@@ -30,6 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { FormsModule } from '@angular/forms';
+
 import { MatToolbarModule, MatSelectModule, MatCardModule, MatInputModule, MatAutocompleteModule, MatFormFieldModule, MatDatepickerModule,MatNativeDateModule,MatListModule, MatProgressSpinnerModule, MatIconModule, MatButtonModule, MatSidenavModule, MatTabsModule } from '@angular/material';
 
 
@@ -43,14 +44,16 @@ import { WeatherService } from './services/weather.service';
 import { RegisterComponent } from './register/register.component';
 import { MeteoCardComponent } from 'VUESYEF/src/src/app/meteo-card/meteo-card.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { CarousselItemDirective } from './caroussel-item.directive';
+import { WeatherDetailsComponent } from './weather-details/weather-details.component';
 
-   
+
 
 @NgModule({
   declarations: [
     AppComponent,
     MeteoCardComponent,
-    
+
 
   DashboardComponent,
 
@@ -58,16 +61,19 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     ProfileComponent,
     WeatherCardComponent,
     RegisterComponent,
-    NavBarComponent  
+    NavBarComponent,
+    CarousselItemDirective,
+    WeatherDetailsComponent
 
   ],
   imports: [
     NgbModule,
     BrowserModule,
     BrowserAnimationsModule,
-    
+
     MatTabsModule,
     MatListModule,
+    MatDatepickerModule,
     FormsModule,
     HttpClientModule,
     MatIconModule,
@@ -88,8 +94,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
-    
-    
+
+
     RouterModule.forRoot([...APP_ROUTES]),
     LocationManagerModule,
     dbModule
@@ -99,4 +105,3 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
-     

@@ -16,6 +16,7 @@ export class LocationService {
     console.log(this.dbService.currentStore);
     this.initLocations();
     //console.log(this.locations);
+
   }
 
 
@@ -36,6 +37,7 @@ export class LocationService {
   }
 
   async initLocations() {
+    alert("initialiazing;")
     await this.dbService.getAll()
       .then((locations: Location[]) => {
         console.log("locations" , locations);
@@ -48,7 +50,10 @@ export class LocationService {
       })
       .catch(err => {
         console.log(err);
-      })
+      });
+
+
+
   }
 
   addLocation(location: Location) {

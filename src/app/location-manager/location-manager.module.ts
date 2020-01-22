@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { LOCATION_MANAGER_ROUTES } from './location-manager.routes';
 import { HomeLocationsComponent } from './home/home.component';
-
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import {
   MatButtonModule,
   MatToolbarModule,
@@ -13,7 +13,7 @@ import {
   MatCardModule,
   MatAutocompleteModule,
   MatFormFieldModule,
-  
+
   MatDividerModule,
   MatListModule,
   MatProgressSpinnerModule,
@@ -41,7 +41,7 @@ import { LocationService } from '../services/location.service';
   declarations: [HomeLocationsComponent, LocationDetailsComponent,LocationAddComponent],
   imports: [
     CommonModule,
-    
+    LeafletModule,
     FormsModule,
     MatCardModule,
     MatInputModule,

@@ -1,7 +1,13 @@
+.link :hover{
+ background-color:lightblue;
+
+}
+
+
 .active  mat-card{
-background-color: aquamarine;
+  background: linear-gradient(to right, #00b4db, #0083b0);
 }
 .activeButtonLink {
-    background-color: aquamarine;
+  background: linear-gradient(to right, #00b4db, #0083b0);
 
 }

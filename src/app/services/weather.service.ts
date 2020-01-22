@@ -1,3 +1,4 @@
+import { Location } from 'src/app/models/location';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
@@ -15,15 +16,15 @@ export class WeatherService {
   constructor(private http: HttpClient) { }
 
 
- 
-  
 
 
+
+  public reload:boolean=true;
 
   getCurrentWeather(location: Location) {
     console.log("Recherche des infos de météo");
     return this.http.get(`${environment.owmUrl}/weather?lat=${location.latitude}&lon=${location.longitude}&appid=${environment.owmKey}`).subscribe(
-    
+
     data => {
 
 
@@ -44,13 +45,13 @@ export class WeatherService {
 
 
 
-      
+      location.currentMeteoDay.date=new Date();
 
       location.currentMeteoDay.meteoInfos.push(meteoInfo);
 
       location.infosAvailable=true;
 
-     
+
 
 
 
@@ -63,11 +64,16 @@ export class WeatherService {
 
 
   getMeteoInfos(location: Location) {
+    if (!this.reload)return;
+      location.infosAvailable=false;
     return this.http.get(`${environment.owmUrl}/forecast?lat=${location.latitude}&lon=${location.longitude}&appid=${environment.owmKey}`)
       .subscribe(
 
 
         data => {
+
+          location.currentMeteoDay=new MeteoDay();
+          location.forecastMeteoDay=new Array<MeteoDay>();
           console.log("Jour courante" +new Date().getHours());
           var meteoDays = new Map<Number, MeteoDay>();
 
@@ -78,7 +84,7 @@ export class WeatherService {
             var info = listInfos[counter];
             var key = new Date(info['dt_txt']).getDay();
 
-            
+
             if (!meteoDays.has(key)) {
               var md = new MeteoDay();
               md.date = new Date(info['dt_txt']);
@@ -86,14 +92,14 @@ export class WeatherService {
 
             }
 
-            
+
             if(![3,9,15,21].includes ( new Date(info['dt_txt']).getHours())) continue;
-            
+
             var meteoInfo = new MeteoInfo();
 
 
             meteoInfo.hour = new Date(info['dt_txt']).getHours();
-            
+
             meteoInfo.weatherState=info['weather'][0]['main'];
             meteoInfo.setMainIcon();
             meteoInfo.humidity = info['main']['humidity'];
@@ -119,6 +125,8 @@ export class WeatherService {
           }
 
 
+
+
           this.getCurrentWeather(location);
 
 
@@ -136,9 +144,12 @@ export class WeatherService {
 
 
 
+
       )
 
 
 
-      }
+
+}
+
 }

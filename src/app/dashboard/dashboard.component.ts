@@ -2,34 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { Location } from '../models/location';
 import { ObjectEvent } from 'openlayers';
-
+import { Router, RouterOutlet, ActivatedRoute } from '@angular/router';
+import {weatherSlideInAnimation} from '../animations';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
+  animations: [weatherSlideInAnimation]
 })
 export class DashboardComponent implements OnInit {
 
-  //test
-  images = [944, 1011, 984].map((n) => `https://picsum.photos/id/${n}/900/500`);
-  testLocations:Location[]=new Array<Location>();
-    //endTEST
-  constructor(private userService:UserService) { 
 
-    let location=new Location(11.53,4.38);
-    location.city="Yaoundé";
-    location.country="Douala";
-    location.region="Centre";
-    
-    for(let i=0;i<6;i++){
-      var current=new Location(1,1);
-      Object.assign(current,location);    this.testLocations.push
-      this.testLocations.push(location);
+
+
+    userLocations:Location[]=new Array<Location>();
+
+
+  constructor(private userService:UserService, private route:ActivatedRoute, private router :Router) {
+
+    if( this.userService.getLocations().size==0 ){
+      this.router.navigateByUrl('locations/add');
+    }
+    console.log("taille : " +this.userService.getLocations().size);
+    console.log(this.userService.getLocations())
+    if(!this.route.firstChild){
+      var location=this.userService.getLocations().values().next().value;
+
+      this.router.navigateByUrl('home/main/'+location.key);
     }
 
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
   }
-  
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet && outlet.activatedRouteData && outlet.activatedRouteData['animation'];
+  }
+
+
   ngOnInit() {
   }
 
 }
+

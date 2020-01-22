@@ -10,6 +10,7 @@ import { proj, View, color } from 'openlayers';
 import { TownImageService } from 'src/app/services/town-image.service';
 import { WeatherService } from 'src/app/services/weather.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
+import * as L from "leaflet";
 @Component({
   selector: 'app-location-details',
   templateUrl: './location-details.component.html',
@@ -38,11 +39,13 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 export class LocationDetailsComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private userService: UserService, private router: Router, private townImageService: TownImageService, private weatherService: WeatherService) {
-    
-    var locationFullName = route.snapshot.params['fullName'];
+
+    var locationFullName = route.snapshot.params['key'];
     this.location = userService.getLocations().get(locationFullName);
-    
-    
+    console.log(this.location);
+
+
+
   }
 
 
@@ -67,6 +70,45 @@ export class LocationDetailsComponent implements OnInit {
   ngOnInit() {
 
     this.townImageService.getImage(this.location).subscribe(data=>{})
+
+    this.configureMap();
   }
+
+
+
+
+  map: L.Map;
+  ol: any;
+
+  options: any;
+
+  layers: any;
+
+
+  configureMap() {
+    this.options = {
+      layers: [
+        L.tileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+          maxZoom: 18,
+          attribution: "..."
+        })
+      ],
+      zoom: 8,
+      center: L.latLng(
+        this.location.latitude,
+        this.location.longitude
+      ),
+    };
+
+    }
+
+
+
+
+  onMapReady(map: L.Map) {
+    this.map = map;
+    L.marker([this.location.latitude, this.location.longitude]).addTo(this.map);
+  }
+
 
 }

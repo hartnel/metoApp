@@ -20,10 +20,13 @@ infosAvailable=false;
 
 
 get fullName(){
+
+  if(!this.country) return '';
+
     if(this.city==null||this.city==undefined){
 
         return (this.country+", "+this.region);
-    }  
+    }
     return this.city+" ( "+this.country +" ,"+this.region+")";
 
 }
@@ -61,7 +64,7 @@ constructor(longitude:number,latitude:number){
 
 
 
-    
+
 }
 
 

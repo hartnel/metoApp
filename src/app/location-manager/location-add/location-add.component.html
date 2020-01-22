@@ -10,7 +10,8 @@
 
             <mat-card class="topInput white-transparent">
                 <mat-card-header>
-                    <mat-card-title>
+
+                  <mat-card-title>
                         Ville
                     </mat-card-title>
                 </mat-card-header>
@@ -18,8 +19,12 @@
                 <mat-card-content>
                     <form width="100%">
                         <mat-form-field style="width:100%">
-                            <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput"
-                                [matAutocomplete]="foundTowns" />
+
+
+                            <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput" value="ok"
+                                [matAutocomplete]="foundTowns"/>
+
+                             <mat-spinner matSuffix [diameter]="25" *ngIf="isPointingLocation" style="float: right; margin-left: 8px"></mat-spinner>
 
                         </mat-form-field>
 
@@ -27,7 +32,7 @@
 
 
                             <mat-option *ngIf="isLoading">
-
+                              <mat-spinner color="accent" diameter=30></mat-spinner>
 
 
 
@@ -84,9 +89,9 @@
 
 
         <div class="form-group ;align-content:center;" fxFlex="20" fxFlex.xs="100%">
-            <mat-card  class="topInput white-transparent " style="height: 100% " fxLayout fxLayout="col" >
+            <mat-card  class="topInput white-transparent " style="height: 100% " fxLayout >
 
-                <button mat-button style="width: 100%; height: 60%;align-self:center;"  routerLinkActive="activeButtonLink"
+                <button mat-button style="width: 100%; height: 60%;font-weight:bold;align-self:center;"  routerLinkActive="activeButtonLink"
                     routerLink="add" (click)="actionAdd()">
 
 
@@ -105,61 +110,13 @@
 
     </div>
 
-    <div  fxFlex="60" fxFlex.xs="50">
-        <aol-map [logo]="true" [width]="width" [height]="height" (onSingleClick)="onSingleClick($event)">
-            <aol-interaction-default></aol-interaction-default>
-            <aol-view [zoom]="zoom">
-                <aol-coordinate [x]="currentLocation.longitude" [y]="currentLocation.latitude" [srid]="'EPSG:4326'"></aol-coordinate>
-            </aol-view>
-            <aol-layer-tile [opacity]="opacity">
-                <aol-source-osm></aol-source-osm>
-            </aol-layer-tile>
-            <aol-layer-vector [opacity]="opacity">
-                <aol-source-vector>
-                    <aol-feature>
-                        <aol-geometry-point>
-                            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
-                        </aol-geometry-point>
-                        <aol-style>
-                            <aol-style-circle [radius]="10">
-                                <aol-style-stroke [color]="'black'" [width]="width"></aol-style-stroke>
-                                <aol-style-fill [color]="'green'"></aol-style-fill>
-                            </aol-style-circle>
-                        </aol-style>
-                    </aol-feature>
-                    <aol-feature>
-                        <aol-geometry-point>
-                            <aol-coordinate [x]="longitudePointer" [y]="latitudePointer" [srid]="'EPSG:4326'"></aol-coordinate>
-                        </aol-geometry-point>
-                        <aol-style>
-                            <aol-style-icon [src]="markerImage" [anchor]="[0.5, 1]" [anchorXUnits]="'fraction'"
-                                [anchorYUnits]="'fraction'" [scale]="0.1" [anchorOrigin]="'top-left'">
-                            </aol-style-icon>
-                        </aol-style>
-                    </aol-feature>
-                </aol-source-vector>
-            </aol-layer-vector>
-            <aol-control>
-                <aol-content>
-                    <div class="ol-overlaycontainer-stopevent">
-                        <div class="ol-zoom ol-unselectable ol-control">
-                            <button [title]="titleZoomIn" class="ol-zoom-in" type="button" title="Zoom in" (click)="increaseZoom()">+</button>
-                            <button [title]="titleZoomOut" class="ol-zoom-out" type="button" title="Zoom out" (click)="decreaseZoom()">−</button>
-                        </div>
-                        <div class="ol-rotate ol-unselectable ol-control">
-                            <button [title]="titleCurrentLocation" (click)="pointerLocation()">&#8982;</button>
-                        </div>
-                        <div class="ol-attribution ol-unselectable ol-control ol-uncollapsible">
-                            <ul>
-                                <li>© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </aol-content>
-            </aol-control>
-        </aol-map>
+    <div style="height: 100%;"
+    leaflet
+    [leafletOptions]="options"
+    (leafletMapReady)="onMapReady($event)"
+    [leafletLayers]="layers">
+    >
+</div>
 
-
-      </div>
 
 </mat-card>

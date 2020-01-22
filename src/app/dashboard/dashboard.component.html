@@ -1,19 +1,42 @@
-<!--
-<div fxLayout="column" style="background:linear-gradient(white,purple);height: 100vh;width:100vw" fxLayoutAlign="center">
 
-    
+<div fxLayout="column" style="width=100%;height:100%" fxLayoutAlign="start" >
 
 
 
-        <weather-card [location]="testLocations[0]" fxFlex="100">
-
-        </weather-card>
+  <div class="cardContainer " fxFlex="70%" fxFlex.xs="100" fxLayoutAlign="center" fxLayout="row" >
 
 
+    <div fxFlex="80" style="height:100%" [@routeAnimations]="o && o.activatedRouteData
+    && o.activatedRouteData['animation']">
 
+      <router-outlet  #o="outlet">
+
+    </router-outlet>
+
+  </div>
+
+
+  </div>
+
+
+
+
+<mat-card class="cardContainer locationList bg-transparent"   fxLayout="row" fxLayoutAlign="center" fxFlex="10"  >
+
+
+  <mat-toolbar fxFlex="80" class="sub-nav white-transparent" fxLayout fxLayoutAlign="space-around" >
+
+
+      <a class="white-transparent" mat-button [routerLink]="['main',location.key]"   routerLinkActive="activeLocation"  [routerLinkActiveOptions]="{exact: true}" *ngFor="let location of userService.getLocations()|keyvalue">
+
+         {{location.value.city}}
+
+      </a>
+  </mat-toolbar>
+
+</mat-card>
 
 
 
 </div>
 
--->

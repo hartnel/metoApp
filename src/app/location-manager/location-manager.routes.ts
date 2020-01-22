@@ -23,7 +23,7 @@ export const LOCATION_MANAGER_ROUTES: Routes = [
 
 
       ,
-      
+
 
       {
 
@@ -35,7 +35,7 @@ export const LOCATION_MANAGER_ROUTES: Routes = [
       },
 
       {
-        path: 'details/:fullName',
+        path: 'details/:key',
         component: LocationDetailsComponent
 
 

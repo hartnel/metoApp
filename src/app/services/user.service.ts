@@ -1,19 +1,53 @@
 import { Injectable } from "@angular/core";
 import { NgxIndexedDBService } from 'ngx-indexed-db';
 import { Location } from '../models/location';
-import { Router } from '@angular/router';
+import { Router, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { LocationService } from './location.service';
 
 
 @Injectable()
-export class UserService {
+export class UserService implements CanActivate {
 
   isAuth = false;
+
+
   user: any;
 
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    if (this.isAuth) {
+      return true;
+    } else {
+      this.router.navigate(['/register'], {
+        queryParams: {
+          return: state.url
+        }
+      });
+      return false;
+    }
+  }
   private userLocations = new Map();
   constructor(private dbService: NgxIndexedDBService, private router: Router, private locationService: LocationService) {
     this.initLocations();
+
+/*
+//test
+var yaounde=new Location(11.53, 3.86);
+      yaounde.city="Yaoundé";
+      yaounde.country="Cameroun";
+      yaounde.region="Centre";
+
+      var douala=new Location(3,3);
+      douala.city="Douala";
+      douala.country="Cameroun";
+      douala.region="Littoral";
+
+      this.getLocations().set(douala.key, douala);
+      this.getLocations().set(yaounde.key, yaounde);
+//endTest
+
+*/
+
+
     dbService.currentStore = 'user';
     this.checkIfDatabaseIsEmpty();
 
@@ -45,12 +79,14 @@ export class UserService {
 
 
   async initLocations() {
-    /* await this.locationService.initLocations()
+    await this.locationService.initLocations()
       .then(() => {
         this.updateLocation();
-      })
-      */
-     
+      });
+
+
+
+
   }
 
   updateLocation() {

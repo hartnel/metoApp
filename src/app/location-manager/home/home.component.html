@@ -1,52 +1,33 @@
 <div class="mainDiv bg-transparent" style="height: 85%" >
-  
 
 
 
 
-  
+
+
   <div class="vertical-nav  container col-md-2 " style="height: 100%" id="sidebar" >
-    <mat-card style="height: 100%;background: rgb(255,255,255,0.1)">
-    <div class="py-4 px-3 mb-4 bg-light">
-      <div class="media d-flex align-items-center">
-        <div class="media-body">
-          <h2 class="m-2"> Liste des Localisations</h2>
+    <mat-card style="height: 100%;background: rgb(255,255,255,0.1)" fxLayout="column" >
+    <div class="py-4 px-3 mb-4 bg-transparent">
+      <div class="media d-flex align-items-center bg-transparent">
+        <div class="media-body bg-transparent">
+          <h2 class="m-2">Liste des localisations</h2>
 
         </div>
       </div>
     </div>
 
-    
-
-    <ul class="nav flex-column bg-white mb-0" >
 
 
-        <li class="nav-item">
-
-            <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
-    
-            <mat-card>
-              <mat-card-content>
-    
-                <button mat-raised-button  routerLinkActive="activeButtonLink" style="min-height: 100%; width:100%;"
-                  routerLink="add"  (click)="scrollToElement(content)">
-    
-    
-                  <mat-icon>add</mat-icon>
-                  Ajouter une localisation
-                </button>
-              
-              </mat-card-content>
-            </mat-card>
-    
-          </li>
-
-      <li class="nav-item" *ngFor="let location of userService.getLocations()|keyvalue">
+    <ul class="nav flex-column  mb-0 bg-transparent"  >
 
 
-        <a class="link"  (click)="scrollToElement(content)" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
 
-          <mat-card>
+      <li class="nav-item bg-transparent"  *ngFor="let location of userService.getLocations()|keyvalue">
+
+
+        <a style="padding-right: 0;padding-left: 0"  class="bg-transparent" (click)="scrollToElement(content)" [routerLink]="['details',location.key]" routerLinkActive="active" [state]=location>
+
+          <mat-card class="white-semi-transparent " >
             <mat-card-header>
               <mat-card-title>
                 {{location.value.city}}
@@ -65,12 +46,32 @@
 
 
 
-     
+
 
     </ul>
 
+
+    <li class="nav-item" >
+
+      <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+
+      <mat-card class="bg-transparent">
+        <mat-card-content>
+
+          <button mat-raised-button  routerLinkActive="activeButtonLink" style="min-height: 100%; width:100%;"
+            routerLink="add"  (click)="scrollToElement(content)">
+
+
+            <mat-icon>add</mat-icon>
+            Ajouter une localisation
+          </button>
+
+        </mat-card-content>
+      </mat-card>
+
+    </li>
   </mat-card>
-  
+
   </div>
 
 

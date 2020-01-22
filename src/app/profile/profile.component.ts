@@ -33,9 +33,7 @@ export class ProfileComponent implements OnInit {
 
 
   ngOnInit() {
-    if(this.userService.isAuth){
-      this.router.navigateByUrl('home');
-    }
+
     this.testFile();
     if (this.isNew) {
       this.userService.clearDB();

@@ -6,11 +6,11 @@ weatherState:string;
 temperature:{
  min,
  max,
- val   
+ val
 };
 
 
-humidity:number;
+humidity='N/A';
 
 pressure:number;
 
@@ -29,7 +29,7 @@ humidity_icon="url('assets/clouds/humidity.png')";
 
 
 setMainIcon(){
-    
+
 switch(this.weatherState){
 
     case 'Rain': this.main_icon=RAIN_ICON;break;
@@ -42,7 +42,7 @@ switch(this.weatherState){
 }
 
 
-get weatherStateText() 
+get weatherStateText()
 
 
 {
@@ -54,7 +54,7 @@ get weatherStateText()
         case 'Clear':return 'Clair';
         case 'Mist':return 'agité';
         default:return '';
-    
+
     }
 
 }
@@ -63,7 +63,7 @@ get weatherStateText()
 
 
 
-}   
+}
 const SNOW_ICON="url('assets/clouds/snow.png')";
 const CLOUDY_ICON="url('assets/clouds/cloudy.png')";
 const LIGHTNING_ICON="url('assets/clouds/lightning.png')";

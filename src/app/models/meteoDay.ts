@@ -14,6 +14,30 @@ export class MeteoDay {
 
     date: Date;
 
+
+    get dateText(){
+      var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+
+
+
+      return this.date.toLocaleDateString("fr-FR", options);
+    }
+
+    get dayText(){
+      var options = { weekday: 'long'};
+      return this.date.toLocaleDateString("fr-FR", options);
+
+    }
+
+
+    get simpleDate(){
+      var options={ year: 'numeric', month: 'long', day: 'numeric' };
+      return this.date.toLocaleDateString("fr-FR", options);
+    }
+
+
+
+
     meteoInfos: MeteoInfo[] = new Array<MeteoInfo>();
 
     get todayForecast(): MeteoInfo[] {
@@ -30,7 +54,7 @@ export class MeteoDay {
 
 
 
-    
+
 
 
 
