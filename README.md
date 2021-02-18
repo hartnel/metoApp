@@ -1,6 +1,7 @@
 # MeteoWaguy
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.5.
+An angular application to display weather informations
 
 ## Development server
 
