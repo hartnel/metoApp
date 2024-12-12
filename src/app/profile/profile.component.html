@@ -1,0 +1,77 @@
+<!-- <a href="" data-toggle="modal" data-target="#userModal"><span class="photo"><img src="assets/img/new_logo.png"
+            alt="userImage" class="img-circle"></span></a> -->
+
+<!-- The Modal -->
+
+<mat-card style="height: 100%" fxLayout="column" class="white-semi-transparent">
+
+<div class="header">
+
+
+
+</div>
+
+
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center" >
+  <mat-card class="">
+    <mat-card-header>
+      <mat-card-avatar class="profile-userpic" style="text-align: center">
+        <input id="image" #imageInput type="file" style="display: none;" />
+        <img
+          src="assets/img/avatar.jpeg"
+          class="rounded-circle"
+          alt="userImage"
+          style="border-radius: 4px;"
+          width="50"
+          height="50"
+          id="target"
+          (click)="changeImage()"
+        />
+      </mat-card-avatar>
+    </mat-card-header>
+
+    <form class="example-form" [formGroup]="userForm"  (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <mat-card-content>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Nom" [value] = "user.lastname" formControlName="lastname"/>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Prenom"  [value]="user.firstname" formControlName="firstname"/>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput [matDatepicker]="picker3" placeholder="Date de naissance" [value]="user.birthday" formControlName="birthday">
+            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+            <mat-datepicker #picker3></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Choisir le sex...</mat-label>
+          <mat-select [(value)]="user.sex" formControlName="sex">
+            <mat-option [value]="sex" *ngFor="let sex of Sexs"
+              >{{ sex }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </mat-card-content>
+
+      <button mat-stroked-button color="accent" class="btn-block">
+        Enregistrer
+      </button>
+    </form>
+  </mat-card>
+</div>
+
+<!-- <label class="image-upload-container btn btn-bwm">
+    <span>Select Image</span>
+
+    <input id="image" #imageInput type="file" style="display: none;">
+
+</label>
+
+<div>
+    <img src="assets/img/background.jpg" id="target" (click)="changeImage()" />
+
+</div> -->
+</mat-card>

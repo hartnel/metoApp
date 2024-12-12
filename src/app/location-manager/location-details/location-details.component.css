@@ -1,0 +1,95 @@
+.mainContainer
+{
+
+}
+
+.white-semi-transparent {
+  background: rgb(255,255,255,0.6);
+
+  }
+
+
+.mainContainer::after{
+    opacity: 0.5;
+}
+
+
+
+
+
+    .actionBar  button {
+
+
+        height: 50px;
+        font-size: 15px;
+        background-color: lightblue;
+        border: none;
+
+
+    }
+
+
+.subCardTitle {
+
+    font-size:30px;
+    font-weight:bold;
+}
+
+
+
+.locationInfos {
+    background: transparent;
+
+    background-size: 100% 100%;
+
+}
+
+.locationInfos mat-card {
+
+    background-color: rgba(255,255,255,.1);
+}
+
+
+
+
+.coordTitle  label{
+  font-size: 20px;
+  font-family: tahoma;
+  font-weight: bold;
+
+
+}
+
+
+
+.coordTitle span{
+
+  align-self: flex-end;
+  font-size: 20px;
+
+}
+
+
+.locationInfos mat-card mat-card-header {
+    background-color:lightblue;
+    align-items: center;
+
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 20px;
+    font-weight: bold;
+
+
+
+}
+
+
+
+.locationInfos .info {
+
+  font-size: 20px;
+  font-family: tahoma;
+  font-weight: bold;
+
+}
+
+

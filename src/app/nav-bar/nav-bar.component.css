@@ -1,0 +1,76 @@
+.main {
+
+    background: transparent;
+    
+}
+
+
+
+.base-nav {
+
+    background: transparent;
+
+margin-top:30px ;
+margin-bottom: 30px;
+
+width: 80%;
+align-self:center;
+
+
+style:flex;
+align-content: space-between;
+
+
+}
+
+
+.base-nav .content {
+
+    
+    
+}
+.base-nav .content a {
+
+    
+
+    
+width:20%;  
+min-width: fit-content;  
+border-radius: 10px;
+padding: 10px;
+font-size:20px;
+color:white;
+text-decoration: none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.app-name {
+
+    padding: 10px;
+    font-size:30px;
+    color:white;
+    font-weight: bold;
+    
+}
+
+.activeLink {
+    background: linear-gradient(to right, #00b4db, #0083b0); 
+    
+}
+

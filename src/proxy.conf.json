@@ -1,0 +1,7 @@
+{
+    "/api/*": {
+        "target": "http://en.wikipedia.org/w/api.php",
+        "secure": false,
+        "logLevel": "debug"
+    }
+}

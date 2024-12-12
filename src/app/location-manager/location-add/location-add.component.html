@@ -1,0 +1,122 @@
+<mat-card class="mainCard" fxLayout="column" fxLayout.xs="column" fxFlexFill  class="bg-transparent">
+    <div fxLayout fxLayout="row" fxLayout.xs="column" fxLayoutGap.xs="2"    fxLayoutAlign="space-between" styleg="padding:0px 25px 0px 25px;" >
+
+
+
+
+
+        <div class="form-group bg" fxFlex="30"  fxFlex.xs="100">
+
+
+            <mat-card class="topInput white-transparent">
+                <mat-card-header>
+
+                  <mat-card-title>
+                        Localisation
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <form width="100%">
+                        <mat-form-field style="width:100%">
+
+
+                            <input matInput [ngModel]="currentLocation.fullName" [formControl]="townInput" value="ok"
+                                [matAutocomplete]="foundTowns"/>
+
+                             <mat-spinner matSuffix [diameter]="25" *ngIf="isPointingLocation" style="float: right; margin-left: 8px"></mat-spinner>
+
+                        </mat-form-field>
+
+                        <mat-autocomplete #foundTowns="matAutocomplete">
+
+
+                            <mat-option *ngIf="isLoading">
+                              <mat-spinner color="accent" diameter=30></mat-spinner>
+
+
+
+                            </mat-option>
+                            <mat-option *ngFor="let location of foundLocations | async" [value]="currentLocation"
+                                (onSelectionChange)="selectLocation(location)">
+                                {{location.fullName}}
+                            </mat-option>
+
+                        </mat-autocomplete>
+
+
+
+
+                    </form>
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+
+
+
+        <div class="form-group" fxFlex="30" fxFlex.xs="100">
+
+            <mat-card class="topInput white-transparent">
+                <mat-card-header>
+                    <mat-card-title class="topInputTitle">
+                        Coordonnées
+                    </mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content class="coordsInput" fxLayout.xs="column">
+
+
+
+                    <mat-form-field d-flex>
+
+                        <input matInput placeholder="Longitude" [formControl]="lonInput" [ngModel]="currentLocation.longitude"></mat-form-field>
+
+
+
+
+                    <mat-form-field fxFlex fxLayoutAlign="end" fxLayoutAlign.xs="start"> <input matInput placeholder="Latitude"
+                            [ngModel]="currentLocation.latitude" [formControl]="latInput"> </mat-form-field>
+
+
+
+                </mat-card-content>
+            </mat-card>
+
+        </div>
+
+
+
+        <div class="form-group ;align-content:center;" fxFlex="20" fxFlex.xs="100%">
+            <mat-card  class="topInput white-transparent " style="height: 100% " fxLayout >
+
+                <button mat-button style="width: 100%; height: 60%;font-weight:bold;align-self:center;"
+                     (click)="actionAdd()">
+
+
+                    <mat-icon>validate</mat-icon>
+                    Ajouter
+                </button>
+
+            </mat-card>
+
+        </div>
+
+
+
+
+
+
+    </div>
+
+    <div style="height: 100%;"
+    leaflet
+    [leafletOptions]="options"
+    (leafletMapReady)="onMapReady($event)"
+    [leafletLayers]="layers">
+    >
+</div>
+
+
+</mat-card>

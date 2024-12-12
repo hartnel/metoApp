@@ -1,0 +1,85 @@
+
+
+
+
+.sub-nav {
+
+
+margin-top:30px ;
+margin-bottom: 30px;
+
+width: 80%;
+align-self:center;
+
+
+style:flex;
+align-content: space-between;
+overflow-y: auto;
+
+}
+
+
+
+.sub-nav a {
+
+
+
+
+width:20%;
+min-width: fit-content;
+border-radius:0.5em;
+border-color:lightseagreen;
+background:rgb(0,0,0,0.1);
+padding: 10px;
+font-display: bold;
+font-size:20px;
+color:white;
+text-decoration: none;
+
+}
+
+.sub-nav a :hover{
+
+background:linear-gradient(white,lightblue);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.app-name {
+
+  padding: 10px;
+  font-size:30px;
+  color:white;
+  font-weight: bold;
+
+}
+
+.activeLocation {
+  border-color:lightblue;
+
+  background: linear-gradient(to right, #00b4db, #0083b0);
+
+}
+
+.locationItem {
+  background:lightblue;
+  padding:100px;
+  border-color: linear-gradient(to right, #00b4db, #0083b0);
+
+}
+
+

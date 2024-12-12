@@ -1,0 +1,146 @@
+.login-wrapper {
+  height: 100%;
+}
+
+.positronx {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+.box {
+  position: relative;
+  top: 0;
+  opacity: 1;
+  float: left;
+  padding: 60px 50px 40px 50px;
+  width: 100%;
+  background: #fff;
+  border-radius: 10px;
+  transform: scale(1);
+  -webkit-transform: scale(1);
+  -ms-transform: scale(1);
+  z-index: 5;
+  max-width: 330px;
+}
+
+.box.back {
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -ms-transform: scale(.95);
+  top: -20px;
+  opacity: .8;
+  z-index: -1;
+}
+
+.box:before {
+  content: "";
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  position: absolute;
+  top: -10px;
+  background: rgba(255, 255, 255, 0.1);
+  left: 0;
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -ms-transform: scale(.95);
+  z-index: -1;
+}
+
+.login-wrapper .example-form {
+  min-width: 100%;
+  max-width: 300px;
+  width: 100%;
+}
+
+.login-wrapper .example-full-width, .login-wrapper .btn-block {
+  width: 100%;
+}
+
+.login-wrapper mat-card-header {
+  text-align: center;
+  width: 100%;
+  display: block;
+  font-weight: 700;
+}
+
+.login-wrapper mat-card-header mat-card-title {
+  font-size: 30px;
+  margin: 0;
+}
+
+.login-wrapper .mat-card {
+  padding: 40px 70px 50px;
+}
+
+.login-wrapper .mat-stroked-button {
+  border: 1px solid currentColor;
+  line-height: 54px;
+  background: #FFF7FA;
+}
+
+.login-wrapper .mat-form-field-appearance-legacy .mat-form-field-infix {
+  padding: 0.8375em 0;
+}
+
+
+
+
+
+/* old css */
+/*This is for the userModal*/
+
+.circle-img {
+
+}
+
+.circle-img img {
+  border-radius: 50%;
+
+}
+.profile-userpic img {
+  float: none;
+  margin: 0 auto;
+  width: 150px;
+  height: 150px;
+  -webkit-border-radius: 50% !important;
+  -moz-border-radius: 50% !important;
+  border-radius: 50% !important;
+}
+
+.profile-usertitle {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.profile-usertitle-name {
+  color: #5a7391;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.profile-usertitle-job {
+  text-transform: uppercase;
+  color: #5b9bd1;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.profile-userbuttons {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.profile-userbuttons .btn {
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 15px;
+  margin-right: 5px;
+}
+
+.profile-userbuttons .btn:last-child {
+  margin-right: 0px;
+}

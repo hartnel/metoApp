@@ -1,0 +1,95 @@
+
+    <mat-toolbar class="main">
+      <mat-toolbar-row class="base-nav " fxLayout fxLayoutAlign="space-between">
+
+        <div fxFlex="10" class="app-name" >
+        <button mat-icon-button (click)="sidenav.toggle()" fxShow="true" fxHide.gt-sm style="background-color:transparent">
+          <mat-icon>dehaze</mat-icon>
+        </button>
+        <span >Meteo App </span>
+      </div>
+
+
+
+        <span class="example-spacer"></span>
+
+
+        <div  fxFlex="50" fxShow="true" class="content"
+          fxHide.lt-md="true" fxLayout="row" fxLayoutAlign="space-between" *ngIf="userService.user" >
+          <!-- The following menu items will be hidden on both SM and XS screen sizes -->
+
+          <a mat-button routerLink="/home" routerLinkActive="activeLink" >
+
+
+            <mat-icon>home </mat-icon>Accueil
+
+
+          </a>
+
+
+          <a mat-button routerLink="/locations" routerLinkActive="activeLink">
+
+            <mat-icon> edit_location</mat-icon> Gestion des localisations
+
+          </a>
+
+
+          <a mat-button routerLink="/profil" routerLinkActive="activeLink">
+
+            <mat-icon>person_outline</mat-icon> Profil
+
+          </a>
+
+
+        </div>
+
+
+      </mat-toolbar-row>
+    </mat-toolbar>
+
+    <mat-sidenav-container fxFlexFill style="position:absolute" class="bg-transparent">
+      <mat-sidenav #sidenav>
+        <mat-nav-list>
+          <a routerLink="/home" routerLinkActive="activeLink" (click)="sidenav.close()">
+
+
+            <mat-icon>home </mat-icon>Accueil
+
+
+          </a>
+
+
+          <a mat-button routerLink="/detailsMeteo" routerLinkActive="activeLink" (click)="sidenav.close()">
+
+            <mat-icon> dehaze</mat-icon> Informations détaillées
+
+          </a>
+
+
+
+          <a mat-button routerLink="/locations" routerLinkActive="activeLink" (click)="sidenav.close()">
+
+            <mat-icon> edit_location</mat-icon> Gestion des localisations
+
+          </a>
+
+
+          <a mat-button routerLink="/locations" routerLinkActive="activeLink" (click)="sidenav.close()">
+
+            <mat-icon> person_outline</mat-icon> Profile
+
+          </a>
+
+
+        </mat-nav-list>
+      </mat-sidenav>
+
+
+      <mat-sidenav-content fxFlexFill class="bg-transparent">
+        <router-outlet >
+
+        </router-outlet>
+      </mat-sidenav-content>
+
+    </mat-sidenav-container>
+

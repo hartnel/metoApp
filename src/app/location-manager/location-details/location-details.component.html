@@ -1,0 +1,165 @@
+<div style="height:100%" fxLayout="row" fxLayout.xs="column"  fxLayoutGap="20px" fxLayoutGap.xs="0">
+
+
+
+
+    <mat-card fxFlex=50% fxLayout="column"  *ngIf="location" class=" locationInfos " fxLayoutAlign="space-between"  [ngStyle]="{'background-image': townImageService.currentTown}"
+        [@simpleFadeAnimation]="'in'">
+
+
+
+
+
+
+
+
+
+        <mat-card  fxFlex="15" style="background:rgb(255,255,255,0.5)">
+            <mat-card-header>
+                <mat-card-title>
+                    Pays
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="info">
+                {{location.country?location.country:"Non défini"}}
+            </mat-card-content>
+        </mat-card>
+
+
+
+
+        <mat-card fxFlex="15"  style="background:rgb(255,255,255,0.5)">
+            <mat-card-header>
+                <mat-card-title>
+                    Région
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="info">
+                {{location.region?location.region:"Non définie"}}
+            </mat-card-content>
+        </mat-card>
+
+
+
+
+
+
+
+
+
+
+    <mat-card fxFlex="15"  style="background:rgb(255,255,255,0.5)">
+            <mat-card-header>
+                <mat-card-title>
+                    Ville
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content class="info">
+                {{location.city?location.city:"Non définie"}}
+            </mat-card-content>
+        </mat-card>
+
+
+
+
+
+        <mat-card fxFlex="15" style="" fxLayout="column" fxLayoutAlign="space-between"  style="background:rgb(255,255,255,0.5)">
+            <mat-card-header>
+                <mat-card-title>
+                    Coordonnées GPS
+                </mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content  fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+
+
+                    <div fxFlex="30" fxFlex.xs="48" class="coordTitle" fxLayout="row" fxLayoutAlign="space-between">
+                        <label>
+                            Longitude
+                        </label>
+                        <span >{{location.truncateLon}}</span>
+                    </div>
+
+
+                    <div fxFlex="30"  fxFlex.xs="48" class="coordTitle" fxLayout="row" fxLayoutAlign="space-between">
+                        <label>
+                            Latitude
+                        </label>
+                        <span>{{location.truncateLat}} </span>
+                </div>
+
+            </mat-card-content>
+        </mat-card>
+
+
+
+
+
+
+        <mat-card class="actionBar mt-auto" style="background: transparent">
+
+            <mat-card-content fxLayoutGap="30%" fxLayout fxLayout.xs="row" fxLayoutGap.xs="2PX">
+
+
+
+
+                <button fxFlex="50%" mat-raised-button routerLinkActive="active" (click)="actionMeteo()">
+
+
+                    <mat-icon>cloud</mat-icon>
+                    Voir la météo
+                </button>
+
+
+
+
+                <button (click)="actionDelete()" fxFlex="50%" mat-raised-button color="accent" ml-auto>
+
+
+
+                    <mat-icon>delete</mat-icon>
+                    Supprimer
+                </button>
+
+
+
+            </mat-card-content>
+        </mat-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </mat-card>
+
+
+
+
+
+    <mat-card fxFlex="50" [@simpleFadeAnimation]="'in'" class="bg-transparent" *ngIf="location" >
+        <mat-card-content style="align-content: space-around; height:100%;margin:0px; " class="bg-transparent" >
+
+            <div style="height: 100%;"
+            leaflet
+            [leafletOptions]="options"
+            (leafletMapReady)="onMapReady($event)"
+            [leafletLayers]="layers">
+            >
+        </div>
+
+        </mat-card-content>
+
+    </mat-card>
+
+    </div>
